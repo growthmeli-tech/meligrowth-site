@@ -87,18 +87,9 @@ export default function Process() {
             >
               {/* Ghost number background */}
               <div
-                style={{
-                  position: "absolute",
-                  bottom: "-0.5rem",
-                  right: "0.5rem",
-                  fontFamily: "var(--font-display)",
-                  fontSize: "clamp(4rem, 8vw, 7rem)",
-                  color: "#1a1a1a",
-                  lineHeight: 1,
-                  letterSpacing: "0.02em",
-                  userSelect: "none",
-                  pointerEvents: "none",
-                }}
+                className="ghost-num"
+                aria-hidden="true"
+                style={{ position: "absolute", bottom: "-0.5rem", right: "0.5rem" }}
               >
                 {s.num}
               </div>
@@ -116,8 +107,8 @@ export default function Process() {
                   <span
                     style={{
                       fontFamily: "var(--font-mono)",
-                      fontSize: "0.55rem",
-                      letterSpacing: "0.2em",
+                      fontSize: "0.75rem",
+                      letterSpacing: "0.16em",
                       color: "var(--color-muted)",
                     }}
                   >

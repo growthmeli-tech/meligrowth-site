@@ -9,7 +9,7 @@ export default function SectionLabel({
   className,
   children,
 }: SectionLabelProps) {
-  const base = variant === "light" ? "eyebrow-light" : "eyebrow-dark";
+  const base = variant === "light" ? "sec-label" : "eyebrow-dark";
   const combined = [base, className].filter(Boolean).join(" ");
   return <div className={combined}>{children}</div>;
 }

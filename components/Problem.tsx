@@ -118,11 +118,6 @@ export default function Problem() {
                 {p.num}
               </div>
 
-              {/* Tag */}
-              <div style={{ marginBottom: "1rem" }}>
-                <span className="tag tag-outline">{p.tag}</span>
-              </div>
-
               {/* Title */}
               <h3 className="heading-h3-sm" style={{ marginBottom: "0.875rem" }}>
                 {p.title.toUpperCase()}
@@ -138,20 +133,9 @@ export default function Problem() {
 
               {/* Ghost number background */}
               <div
+                className="ghost-num"
                 aria-hidden="true"
-                style={{
-                  position: "absolute",
-                  bottom: "-0.5rem",
-                  right: "-0.25rem",
-                  fontFamily: "var(--font-display)",
-                  fontSize: "clamp(4rem, 7vw, 6rem)",
-                  color: "#1a1a1a",
-                  lineHeight: 1,
-                  letterSpacing: "0.02em",
-                  userSelect: "none",
-                  pointerEvents: "none",
-                  zIndex: 0,
-                }}
+                style={{ position: "absolute", bottom: "-0.5rem", right: "-0.25rem", zIndex: 0 }}
               >
                 {p.num}
               </div>

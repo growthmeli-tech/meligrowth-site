@@ -61,15 +61,10 @@ export default function Benefits() {
       <div className="container">
         <div className="benefits-header" style={{ marginBottom: "clamp(3rem, 5vw, 5rem)" }}>
           <SectionLabel>[05] — Lo Que Cambia</SectionLabel>
-          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "2rem", flexWrap: "wrap" }}>
-            <h2 className="headline">
-              ANTES Y DESPUÉS DE<br />TRABAJAR CON{" "}
-              <em style={{ fontStyle: "normal", color: "var(--color-accent)" }}>NOSOTROS</em>
-            </h2>
-            <p className="body-regular" style={{ maxWidth: "340px", margin: 0 }}>
-              Cada servicio que entregamos se traduce en un cambio real y medible para tu cuenta.
-            </p>
-          </div>
+          <h2 className="headline">
+            ANTES Y DESPUÉS DE<br />TRABAJAR CON{" "}
+            <em style={{ fontStyle: "normal", color: "var(--color-accent)" }}>NOSOTROS</em>
+          </h2>
         </div>
 
         <div className="features-list">
@@ -85,7 +80,7 @@ export default function Benefits() {
                   }}
                 >
                   {/* ── BEFORE ── */}
-                  <div>
+                  <div className="transform-before">
                     <div
                       style={{
                         fontFamily: "var(--font-mono)",
@@ -96,7 +91,7 @@ export default function Benefits() {
                         marginBottom: "0.875rem",
                       }}
                     >
-                      {f.num} · Antes
+                      Antes
                     </div>
                     <p
                       className="body-regular"
@@ -130,19 +125,7 @@ export default function Benefits() {
                   </div>
 
                   {/* ── AFTER ── */}
-                  <div>
-                    <div
-                      style={{
-                        fontFamily: "var(--font-mono)",
-                        fontSize: "0.75rem",
-                        letterSpacing: "0.16em",
-                        textTransform: "uppercase",
-                        color: "var(--color-accent)",
-                        marginBottom: "0.5rem",
-                      }}
-                    >
-                      Con ML Growth
-                    </div>
+                  <div className="transform-after">
                     <h3 className="heading-h3" style={{ marginBottom: "0.75rem" }}>
                       {f.after}
                     </h3>

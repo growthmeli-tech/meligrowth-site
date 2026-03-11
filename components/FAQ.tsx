@@ -100,20 +100,6 @@ export default function FAQ() {
                 padding: "clamp(1.5rem, 2.5vw, 2rem)",
               }}
             >
-              {/* Mono index label */}
-              <div
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.75rem",
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  color: "var(--color-muted-light)",
-                  marginBottom: "1.25rem",
-                }}
-              >
-                {String(i + 1).padStart(2, "0")}
-              </div>
-
               {/* Question */}
               <h3 className="heading-h3-sm" style={{ marginBottom: "0.75rem" }}>
                 {item.q}

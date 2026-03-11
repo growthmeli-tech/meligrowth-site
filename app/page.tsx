@@ -31,6 +31,7 @@ export default function Home() {
         <div className="section-divider" />
         <FAQ />
         <BottomCTA />
+        <div className="section-divider" />
         <ContactCTA />
       </main>
       <Footer />

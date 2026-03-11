@@ -177,13 +177,13 @@ body {
   font-family: var(--font-mono);
 }
 
-/* [01] — SECTION LABEL */
-.sec-label {
+/* [01] — SECTION LABEL (canonical; eyebrow-light is an alias) */
+.sec-label, .eyebrow-light {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--color-muted-light);
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -197,30 +197,15 @@ body {
   font-weight: 700;
 }
 
-/* eyebrow-light = dark bg, light text (alias for .sec-label) */
-.eyebrow-light {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--color-muted-light);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  margin-bottom: 1.75rem;
-  border-left: 2px solid var(--color-accent);
-  padding-left: 0.75rem;
-}
-
 /* eyebrow-dark = yellow/light bg, dark text (Stats band) */
 .eyebrow-dark {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.65);
   margin-bottom: 1.75rem;
-  border-left: 2px solid rgba(0, 0, 0, 0.25);
+  border-left: 2px solid rgba(0, 0, 0, 0.4);
   padding-left: 0.75rem;
 }
 
@@ -645,11 +630,15 @@ body {
   /* Benefits — stack transform rows */
   .transform-row > div { grid-template-columns: 1fr !important; }
   .transform-row .arrow-sep { display: none !important; }
+  /* Add visual separation between before and after when stacked */
+  .transform-before { padding-bottom: clamp(1rem, 2vw, 1.5rem); border-bottom: 1px solid var(--color-border); }
+  .transform-after { padding-top: clamp(1rem, 2vw, 1.5rem); }
 }
 
 @media (max-width: 768px) {
   .footer-grid { grid-template-columns: 1fr !important; }
   .stats-band-inner { flex-direction: column !important; align-items: flex-start !important; }
+  .stats-band-inner > div:last-child { text-align: left !important; }
 
   /* CTA perks: 1 col on tablet/mobile */
   .cta-perks-grid { grid-template-columns: 1fr !important; }
@@ -657,7 +646,7 @@ body {
 
 @media (max-width: 640px) {
   .faq-grid { grid-template-columns: 1fr !important; }
-  .stats-cells { grid-template-columns: 1fr !important; }
+  .stats-cells { grid-template-columns: repeat(2, 1fr) !important; }
 
   /* Tighter section spacing on mobile */
   .section-padding { padding-block: clamp(48px, 8vw, 80px); }
@@ -665,9 +654,6 @@ body {
   /* Hero: CTA buttons stack full-width */
   .hero-ctas { flex-direction: column; }
   .hero-ctas > * { width: 100%; justify-content: center; }
-
-  /* Stats: left-align revenue block when stacked */
-  .stats-band-inner > div:last-child { text-align: left !important; }
 
   /* Stats: add edge padding when full-bleed */
   .stats-cells { padding-inline: clamp(1.25rem, 4vw, 3rem); }
@@ -693,5 +679,8 @@ body {
 
 @media (max-width: 400px) {
   /* Tighter eyebrow spacing */
-  .eyebrow-light, .eyebrow-dark, .sec-label { margin-bottom: 1rem; }
+  .sec-label, .eyebrow-light, .eyebrow-dark { margin-bottom: 1rem; }
+
+  /* Stats: single column on very small screens */
+  .stats-cells { grid-template-columns: 1fr !important; }
 }

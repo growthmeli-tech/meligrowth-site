@@ -121,69 +121,7 @@ export default function ContactCTA() {
     >
       <div className="container">
 
-        {/* ── Headline ─────────────────────────────────────── */}
-        <div className="cta-headline" style={{ marginBottom: "clamp(2.5rem, 4vw, 3.5rem)" }}>
-          <SectionLabel>[08] — Empezá Hoy</SectionLabel>
-          <h2 className="headline">
-            ¿LISTO PARA ESCALAR<br />
-            <em style={{ fontStyle: "normal", color: "var(--color-accent)" }}>TU CUENTA?</em>
-          </h2>
-        </div>
-
-        {/* ── Perks strip — full width, 3 cells ───────────── */}
-        <div
-          className="cta-perks-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "2px",
-            background: "var(--color-border)",
-            marginBottom: "clamp(3rem, 5vw, 4.5rem)",
-          }}
-        >
-          {perks.map((p) => (
-            <div
-              key={p.value}
-              className="cta-perk"
-              style={{
-                background: "var(--color-bg)",
-                borderLeft: "2px solid var(--color-accent)",
-                padding: "clamp(1.25rem, 2.5vw, 1.75rem) clamp(1.25rem, 2.5vw, 1.75rem)",
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.375rem",
-              }}
-            >
-              <div
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "clamp(2rem, 3.5vw, 2.75rem)",
-                  fontWeight: 400,
-                  color: "var(--color-accent)",
-                  lineHeight: 1,
-                  letterSpacing: "0.02em",
-                }}
-              >
-                {p.value}
-              </div>
-              <div
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.75rem",
-                  fontWeight: 400,
-                  color: "var(--color-muted-light)",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  lineHeight: 1.5,
-                }}
-              >
-                {p.label}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* ── Form grid — 2 col ────────────────────────────── */}
+        {/* ── 2-col grid: left = headline + trust, right = form ── */}
         <div
           className="cta-grid"
           style={{
@@ -193,8 +131,16 @@ export default function ContactCTA() {
             alignItems: "start",
           }}
         >
-          {/* Left: why / trust */}
+          {/* Left: headline + body + trust */}
           <div className="cta-left">
+            <div className="cta-headline" style={{ marginBottom: "clamp(2rem, 4vw, 3rem)" }}>
+              <SectionLabel>[08] — Empezá Hoy</SectionLabel>
+              <h2 className="headline">
+                ¿LISTO PARA ESCALAR<br />
+                <em style={{ fontStyle: "normal", color: "var(--color-accent)" }}>TU CUENTA?</em>
+              </h2>
+            </div>
+
             <p
               className="body-lg"
               style={{ marginBottom: "2.5rem", maxWidth: "400px" }}
@@ -204,27 +150,14 @@ export default function ContactCTA() {
             </p>
 
             <div style={{ display: "flex", flexDirection: "column" }}>
-              {[
-                { label: "Sin compromiso", detail: "100% gratuito, sin contrato" },
-                { label: "Respuesta rápida", detail: "En menos de 48 horas hábiles" },
-                { label: "A medida", detail: "Diagnóstico personalizado para tu cuenta" },
-              ].map((item, i, arr) => (
-                <div key={item.label}>
+              {["Sin compromiso", "Respuesta en 48 horas", "Diagnóstico a medida"].map((label, i, arr) => (
+                <div key={label}>
                   <div
                     className="cta-trust-row"
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: "1fr 1.5fr",
-                      gap: "1rem",
-                      padding: "1.125rem 0",
-                      alignItems: "center",
-                    }}
+                    style={{ padding: "1rem 0" }}
                   >
                     <span style={{ fontSize: "1rem", fontWeight: 600, color: "var(--color-text)" }}>
-                      {item.label}
-                    </span>
-                    <span className="body-regular">
-                      {item.detail}
+                      {label}
                     </span>
                   </div>
                   {i < arr.length - 1 && <hr className="row-divider" />}
@@ -242,26 +175,12 @@ export default function ContactCTA() {
               border: "1px solid var(--color-border)",
               borderTop: "3px solid var(--color-accent)",
               borderRadius: "2px",
-              padding: "clamp(1.75rem, 3vw, 2.25rem)",
+              padding: "1.25rem clamp(1.75rem, 3vw, 2.25rem) clamp(1.75rem, 3vw, 2.25rem)",
               display: "flex",
               flexDirection: "column",
               gap: "1.125rem",
             }}
           >
-            <div
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "0.75rem",
-                letterSpacing: "0.16em",
-                textTransform: "uppercase",
-                color: "var(--color-muted-light)",
-                paddingBottom: "0.5rem",
-                borderBottom: "1px solid var(--color-border)",
-              }}
-            >
-              Formulario de diagnóstico
-            </div>
-
             <div className="cta-form-cols" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
               <div>
                 <label htmlFor="nombre" style={labelStyle}>Nombre *</label>
@@ -340,20 +259,6 @@ export default function ContactCTA() {
             <Button type="submit" full style={{ marginTop: "0.25rem" }}>
               Pedí tu diagnóstico gratis
             </Button>
-
-            <p
-              style={{
-                textAlign: "center",
-                fontFamily: "var(--font-mono)",
-                fontSize: "0.7rem",
-                color: "var(--color-muted)",
-                margin: 0,
-                letterSpacing: "0.1em",
-                textTransform: "uppercase",
-              }}
-            >
-              Sin compromiso · Respuesta en menos de 24hs
-            </p>
           </form>
         </div>
       </div>

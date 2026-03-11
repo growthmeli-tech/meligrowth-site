@@ -106,26 +106,13 @@ export default function Solution() {
         {/* Header */}
         <div className="solution-header" style={{ marginBottom: "clamp(2.5rem, 5vw, 4rem)" }}>
           <SectionLabel>[02] — La Solución</SectionLabel>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "flex-end",
-              justifyContent: "space-between",
-              gap: "2rem",
-              flexWrap: "wrap",
-            }}
-          >
-            <h2 className="headline" style={{ maxWidth: "560px" }}>
-              TODO LO QUE NECESITA<br />
-              <em style={{ fontStyle: "normal", color: "var(--color-accent)" }}>
-                TU CUENTA,
-              </em>{" "}
-              EN UN SOLO LUGAR
-            </h2>
-            <p className="body-regular" style={{ maxWidth: "320px", margin: 0 }}>
-              Un equipo completo operando tu cuenta en Mercado Libre — sin que tengas que coordinar nada.
-            </p>
-          </div>
+          <h2 className="headline" style={{ maxWidth: "560px" }}>
+            TODO LO QUE NECESITA<br />
+            <em style={{ fontStyle: "normal", color: "var(--color-accent)" }}>
+              TU CUENTA,
+            </em>{" "}
+            EN UN SOLO LUGAR
+          </h2>
         </div>
 
         {/* 3-pillar grid */}
@@ -183,8 +170,8 @@ export default function Solution() {
                   <span
                     style={{
                       fontFamily: "var(--font-mono)",
-                      fontSize: "0.55rem",
-                      letterSpacing: "0.2em",
+                      fontSize: "0.75rem",
+                      letterSpacing: "0.16em",
                       color: "var(--color-muted)",
                     }}
                   >
@@ -193,21 +180,9 @@ export default function Solution() {
                 </div>
 
                 {/* Title */}
-                <h3 className="heading-h3" style={{ marginBottom: "0.35rem" }}>
+                <h3 className="heading-h3" style={{ marginBottom: "0.875rem" }}>
                   {p.title.toUpperCase()}
                 </h3>
-                <p
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.75rem",
-                    letterSpacing: "0.12em",
-                    color: "var(--color-accent)",
-                    textTransform: "uppercase",
-                    marginBottom: "0.875rem",
-                  }}
-                >
-                  {p.subtitle}
-                </p>
 
                 {/* Description */}
                 <p className="body-regular" style={{ marginBottom: "1.25rem" }}>

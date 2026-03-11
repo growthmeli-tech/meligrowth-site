@@ -42,8 +42,6 @@ export default function Stats() {
       {/* Yellow band — full bleed */}
       <div className="stats-band" style={{ background: "var(--color-accent)" }}>
         <div className="container" style={{ paddingBlock: "clamp(2rem, 4vw, 3rem)" }}>
-          <SectionLabel variant="dark">[04] — Resultados</SectionLabel>
-
           <div
             className="stats-band-inner"
             style={{
@@ -59,7 +57,7 @@ export default function Stats() {
                 fontFamily: "var(--font-display)",
                 fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
                 fontWeight: 400,
-                color: "#0a0a0a",
+                color: "var(--color-bg)",
                 lineHeight: 1,
                 letterSpacing: "0.01em",
                 margin: 0,
@@ -84,7 +82,7 @@ export default function Stats() {
                 style={{
                   fontFamily: "var(--font-mono)",
                   fontSize: "0.75rem",
-                  color: "rgba(0,0,0,0.5)",
+                  color: "rgba(0,0,0,0.65)",
                   textTransform: "uppercase",
                   letterSpacing: "0.12em",
                   marginTop: "0.4rem",

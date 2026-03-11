@@ -11,7 +11,7 @@ const tiers = [
     id: "starter",
     name: "STARTER",
     range: "Menos de $2M / mes",
-    fee: "Consultar",
+    fee: "USD 500",
     share: "Fee fijo mensual",
     featured: false,
     features: [
@@ -27,7 +27,7 @@ const tiers = [
     id: "growth",
     name: "GROWTH",
     range: "$2M – $10M / mes",
-    fee: "Consultar",
+    fee: "USD 750",
     share: "Fee + % del sell-out",
     featured: true,
     features: [
@@ -44,7 +44,7 @@ const tiers = [
     id: "scale",
     name: "SCALE",
     range: "Más de $10M / mes",
-    fee: "Consultar",
+    fee: "USD 1000",
     share: "Fee + % (menor porcentaje)",
     featured: false,
     features: [
@@ -91,25 +91,12 @@ export default function Pricing() {
         {/* Header */}
         <div className="pricing-header" style={{ marginBottom: "clamp(2.5rem, 5vw, 4rem)" }}>
           <SectionLabel>[06] — Precios</SectionLabel>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "flex-end",
-              justifyContent: "space-between",
-              gap: "2rem",
-              flexWrap: "wrap",
-            }}
-          >
-            <h2 className="headline" style={{ maxWidth: "600px" }}>
-              PLANES QUE SE ADAPTAN{" "}
-              <em style={{ fontStyle: "normal", color: "var(--color-accent)" }}>
-                A TU ESCALA
-              </em>
-            </h2>
-            <p className="body-regular" style={{ maxWidth: "320px", margin: 0 }}>
-              Sin contratos largos ni estructuras fijas. El modelo de trabajo se ajusta a tu volumen de ventas.
-            </p>
-          </div>
+          <h2 className="headline" style={{ maxWidth: "600px" }}>
+            PLANES QUE SE ADAPTAN{" "}
+            <em style={{ fontStyle: "normal", color: "var(--color-accent)" }}>
+              A TU ESCALA
+            </em>
+          </h2>
         </div>
 
         {/* 3-column pricing grid */}
@@ -136,20 +123,20 @@ export default function Pricing() {
                   : "3px solid transparent",
               }}
             >
-              {/* Tier label row */}
+              {/* Plan name + badge */}
               <div
                 style={{
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  marginBottom: "1.5rem",
+                  marginBottom: "1.75rem",
                 }}
               >
                 <span
                   style={{
                     fontFamily: "var(--font-mono)",
                     fontSize: "0.75rem",
-                    letterSpacing: "0.12em",
+                    letterSpacing: "0.18em",
                     textTransform: "uppercase",
                     color: "var(--color-muted-light)",
                   }}
@@ -161,76 +148,69 @@ export default function Pricing() {
                 )}
               </div>
 
-              {/* Volume range */}
-              <div
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.75rem",
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  color: "var(--color-muted-light)",
-                  marginBottom: "0.5rem",
-                }}
-              >
-                Volumen
-              </div>
-              <div
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "clamp(1.5rem, 2.8vw, 2.25rem)",
-                  fontWeight: 400,
-                  color: "var(--color-accent)",
-                  lineHeight: 1,
-                  letterSpacing: "0.02em",
-                  marginBottom: "0.75rem",
-                }}
-              >
-                {tier.range}
-              </div>
-
-              <hr className="row-divider" style={{ marginBottom: "1.25rem" }} />
-
-              {/* Fee + model */}
-              <div style={{ marginBottom: "1.5rem" }}>
-                <div
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.75rem",
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
-                    color: "var(--color-muted-light)",
-                    marginBottom: "0.4rem",
-                  }}
-                >
-                  Inversión
-                </div>
+              {/* Price — hero element */}
+              <div style={{ marginBottom: "0.625rem" }}>
                 <div
                   style={{
                     fontFamily: "var(--font-display)",
-                    fontSize: "clamp(1.75rem, 3vw, 2.5rem)",
+                    fontSize: "clamp(3rem, 5vw, 4rem)",
                     fontWeight: 400,
-                    color: "var(--color-text)",
+                    color: tier.featured ? "var(--color-accent)" : "var(--color-text)",
                     lineHeight: 1,
                     letterSpacing: "0.02em",
-                    marginBottom: "0.35rem",
                   }}
                 >
                   {tier.fee}
                 </div>
                 <div
                   style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.75rem",
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
-                    color: "var(--color-muted)",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.75rem",
+                    marginTop: "0.5rem",
                   }}
                 >
-                  {tier.share}
+                  <span
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.7rem",
+                      letterSpacing: "0.14em",
+                      textTransform: "uppercase",
+                      color: "var(--color-muted)",
+                    }}
+                  >
+                    /mes
+                  </span>
+                  <span style={{ color: "var(--color-border-bright)" }}>·</span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.7rem",
+                      letterSpacing: "0.14em",
+                      textTransform: "uppercase",
+                      color: "var(--color-muted)",
+                    }}
+                  >
+                    {tier.share}
+                  </span>
                 </div>
               </div>
 
-              <hr className="row-divider" style={{ marginBottom: "1.25rem" }} />
+              <hr className="row-divider" style={{ margin: "1.25rem 0" }} />
+
+              {/* Volume range */}
+              <div
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: "0.72rem",
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                  color: "var(--color-muted-light)",
+                  marginBottom: "1.5rem",
+                }}
+              >
+                Facturación {tier.range}
+              </div>
 
               {/* Feature list */}
               <ul
@@ -283,23 +263,6 @@ export default function Pricing() {
           ))}
         </div>
 
-        {/* Disclaimer note */}
-        <div
-          style={{
-            background: "var(--color-surface)",
-            border: "1px solid var(--color-border)",
-            borderLeft: "2px solid var(--color-accent)",
-            padding: "1rem 1.25rem",
-            marginTop: "2px",
-            fontFamily: "var(--font-mono)",
-            fontSize: "0.75rem",
-            letterSpacing: "0.12em",
-            textTransform: "uppercase",
-            color: "var(--color-muted-light)",
-          }}
-        >
-          Todos los planes incluyen diagnóstico gratuito inicial. Sin contratos largos — operamos sin ataduras.
-        </div>
 
       </div>
     </section>
