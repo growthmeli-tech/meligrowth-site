@@ -39,23 +39,22 @@ export default function Stats() {
 
   return (
     <section ref={sectionRef} id="estadisticas" aria-label="Estadísticas">
-      {/* Yellow band — full bleed */}
       <div className="stats-band" style={{ background: "var(--color-accent)" }}>
-        <div className="container" style={{ paddingBlock: "clamp(2rem, 4vw, 3rem)" }}>
+        <div className="container" style={{ paddingBlock: "clamp(3rem, 6vw, 5rem)" }}>
           <div
             className="stats-band-inner"
             style={{
-              display: "flex",
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "clamp(2rem, 6vw, 5rem)",
               alignItems: "center",
-              justifyContent: "space-between",
-              gap: "2rem",
-              flexWrap: "wrap",
             }}
           >
+            {/* Left: headline */}
             <h2
               style={{
                 fontFamily: "var(--font-display)",
-                fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
+                fontSize: "clamp(2.25rem, 4.5vw, 3.75rem)",
                 fontWeight: 400,
                 color: "var(--color-bg)",
                 lineHeight: 1,
@@ -66,66 +65,52 @@ export default function Stats() {
               RESULTADOS QUE<br />HABLAN POR SÍ SOLOS
             </h2>
 
-            <div style={{ textAlign: "right", flexShrink: 0 }}>
-              <div
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "clamp(2.5rem, 5vw, 4rem)",
-                  color: "#0a0a0a",
-                  lineHeight: 1,
-                  letterSpacing: "0.02em",
-                }}
-              >
-                $1.100.000.000
-              </div>
-              <div
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.75rem",
-                  color: "rgba(0,0,0,0.65)",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.12em",
-                  marginTop: "0.4rem",
-                }}
-              >
-                Facturado en 9 meses
-              </div>
+            {/* Right: 2×2 stat grid */}
+            <div
+              className="stats-cells"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, 1fr)",
+                gap: "2px",
+                background: "rgba(0,0,0,0.15)",
+              }}
+            >
+              {stats.map((s) => (
+                <div
+                  key={s.value}
+                  className="stat-cell"
+                  style={{ background: "var(--color-accent)" }}
+                >
+                  <div
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: "clamp(2rem, 3.5vw, 2.75rem)",
+                      fontWeight: 400,
+                      color: "var(--color-bg)",
+                      lineHeight: 1,
+                      letterSpacing: "0.02em",
+                    }}
+                  >
+                    {s.value}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.7rem",
+                      color: "rgba(0,0,0,0.6)",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.1em",
+                      lineHeight: 1.5,
+                      marginTop: "0.4rem",
+                    }}
+                  >
+                    {s.label}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Stats grid — constrained to container max */}
-      <div
-        className="stats-cells"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
-          gap: "2px",
-          background: "var(--color-border)",
-          maxWidth: "var(--container-max)",
-          marginInline: "auto",
-        }}
-      >
-        {stats.map((s) => (
-          <div key={s.value} className="stat-cell">
-            <div className="stat-num">{s.value}</div>
-            <div
-              style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: "0.75rem",
-                fontWeight: 400,
-                color: "var(--color-muted-light)",
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                lineHeight: 1.5,
-                marginTop: "0.4rem",
-              }}
-            >
-              {s.label}
-            </div>
-          </div>
-        ))}
       </div>
     </section>
   );

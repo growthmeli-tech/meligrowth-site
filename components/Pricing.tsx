@@ -12,7 +12,7 @@ const tiers = [
     name: "STARTER",
     range: "Menos de $2M / mes",
     fee: "USD 500",
-    share: "Fee fijo mensual",
+    share: "Fee fijo + 10% sell-out",
     featured: false,
     features: [
       "Operación diaria completa",
@@ -28,7 +28,7 @@ const tiers = [
     name: "GROWTH",
     range: "$2M – $10M / mes",
     fee: "USD 750",
-    share: "Fee + % del sell-out",
+    share: "Fee fijo + 8% sell-out",
     featured: true,
     features: [
       "Todo lo del plan Starter",
@@ -45,7 +45,7 @@ const tiers = [
     name: "SCALE",
     range: "Más de $10M / mes",
     fee: "USD 1000",
-    share: "Fee + % (menor porcentaje)",
+    share: "Fee fijo + 7% sell-out",
     featured: false,
     features: [
       "Todo lo del plan Growth",

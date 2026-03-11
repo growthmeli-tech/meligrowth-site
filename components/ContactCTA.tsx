@@ -154,8 +154,17 @@ export default function ContactCTA() {
                 <div key={label}>
                   <div
                     className="cta-trust-row"
-                    style={{ padding: "1rem 0" }}
+                    style={{ padding: "1rem 0", display: "flex", alignItems: "center", gap: "0.75rem" }}
                   >
+                    <div style={{
+                      width: "1.25rem", height: "1.25rem", borderRadius: "50%",
+                      background: "rgba(255,214,0,0.12)",
+                      display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
+                    }}>
+                      <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                        <path d="M1 4l2 2.5L7 1.5" stroke="var(--color-accent)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
                     <span style={{ fontSize: "1rem", fontWeight: 600, color: "var(--color-text)" }}>
                       {label}
                     </span>
