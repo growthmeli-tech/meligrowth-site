@@ -158,7 +158,7 @@ export default function Hero() {
               }}>$1.1M+</div>
               <div style={{
                 fontFamily: "var(--font-mono)",
-                fontSize: "0.65rem",
+                fontSize: "0.75rem",
                 color: "var(--color-muted-light)",
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
@@ -189,7 +189,7 @@ export default function Hero() {
               }}>+38%</div>
               <div style={{
                 fontFamily: "var(--font-mono)",
-                fontSize: "0.65rem",
+                fontSize: "0.75rem",
                 color: "var(--color-muted-light)",
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",

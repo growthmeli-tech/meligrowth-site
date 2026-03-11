@@ -83,7 +83,7 @@ export default function Stats() {
               <div
                 style={{
                   fontFamily: "var(--font-mono)",
-                  fontSize: "0.6rem",
+                  fontSize: "0.75rem",
                   color: "rgba(0,0,0,0.5)",
                   textTransform: "uppercase",
                   letterSpacing: "0.12em",
@@ -115,7 +115,7 @@ export default function Stats() {
             <div
               style={{
                 fontFamily: "var(--font-mono)",
-                fontSize: "0.6rem",
+                fontSize: "0.75rem",
                 fontWeight: 400,
                 color: "var(--color-muted-light)",
                 textTransform: "uppercase",

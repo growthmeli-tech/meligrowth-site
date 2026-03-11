@@ -89,7 +89,7 @@ export default function Benefits() {
                     <div
                       style={{
                         fontFamily: "var(--font-mono)",
-                        fontSize: "0.6rem",
+                        fontSize: "0.75rem",
                         letterSpacing: "0.16em",
                         textTransform: "uppercase",
                         color: "var(--color-muted)",
@@ -134,7 +134,7 @@ export default function Benefits() {
                     <div
                       style={{
                         fontFamily: "var(--font-mono)",
-                        fontSize: "0.6rem",
+                        fontSize: "0.75rem",
                         letterSpacing: "0.16em",
                         textTransform: "uppercase",
                         color: "var(--color-accent)",

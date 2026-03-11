@@ -100,7 +100,7 @@ export default function ContactCTA() {
   const labelStyle: React.CSSProperties = {
     display: "block",
     fontFamily: "var(--font-mono)",
-    fontSize: "0.65rem",
+    fontSize: "0.75rem",
     color: "var(--color-muted-light)",
     marginBottom: "0.5rem",
     fontWeight: 400,
@@ -169,7 +169,7 @@ export default function ContactCTA() {
               <div
                 style={{
                   fontFamily: "var(--font-mono)",
-                  fontSize: "0.65rem",
+                  fontSize: "0.75rem",
                   fontWeight: 400,
                   color: "var(--color-muted-light)",
                   letterSpacing: "0.1em",
@@ -251,7 +251,7 @@ export default function ContactCTA() {
             <div
               style={{
                 fontFamily: "var(--font-mono)",
-                fontSize: "0.65rem",
+                fontSize: "0.75rem",
                 letterSpacing: "0.16em",
                 textTransform: "uppercase",
                 color: "var(--color-muted-light)",

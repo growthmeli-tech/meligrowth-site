@@ -58,7 +58,7 @@ export default function Footer() {
               <p
                 style={{
                   fontFamily: "var(--font-mono)",
-                  fontSize: "0.6rem",
+                  fontSize: "0.75rem",
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
                   color: "var(--color-muted)",
@@ -88,7 +88,7 @@ export default function Footer() {
               <h4
                 style={{
                   fontFamily: "var(--font-mono)",
-                  fontSize: "0.6rem",
+                  fontSize: "0.75rem",
                   fontWeight: 400,
                   letterSpacing: "0.15em",
                   textTransform: "uppercase",
@@ -120,7 +120,7 @@ export default function Footer() {
               <h4
                 style={{
                   fontFamily: "var(--font-mono)",
-                  fontSize: "0.6rem",
+                  fontSize: "0.75rem",
                   fontWeight: 400,
                   letterSpacing: "0.15em",
                   textTransform: "uppercase",
@@ -157,7 +157,7 @@ export default function Footer() {
             <p
               style={{
                 fontFamily: "var(--font-mono)",
-                fontSize: "0.6rem",
+                fontSize: "0.75rem",
                 letterSpacing: "0.08em",
                 color: "var(--color-muted)",
                 margin: 0,

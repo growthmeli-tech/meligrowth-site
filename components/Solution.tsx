@@ -199,7 +199,7 @@ export default function Solution() {
                 <p
                   style={{
                     fontFamily: "var(--font-mono)",
-                    fontSize: "0.6rem",
+                    fontSize: "0.75rem",
                     letterSpacing: "0.12em",
                     color: "var(--color-accent)",
                     textTransform: "uppercase",
@@ -239,7 +239,7 @@ export default function Solution() {
                           color: "var(--color-accent)",
                           flexShrink: 0,
                           marginTop: "0.15rem",
-                          fontSize: "0.6rem",
+                          fontSize: "0.75rem",
                         }}
                       >
                         ▸

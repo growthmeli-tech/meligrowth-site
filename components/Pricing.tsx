@@ -148,7 +148,7 @@ export default function Pricing() {
                 <span
                   style={{
                     fontFamily: "var(--font-mono)",
-                    fontSize: "0.65rem",
+                    fontSize: "0.75rem",
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
                     color: "var(--color-muted-light)",
@@ -165,7 +165,7 @@ export default function Pricing() {
               <div
                 style={{
                   fontFamily: "var(--font-mono)",
-                  fontSize: "0.65rem",
+                  fontSize: "0.75rem",
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
                   color: "var(--color-muted-light)",
@@ -195,7 +195,7 @@ export default function Pricing() {
                 <div
                   style={{
                     fontFamily: "var(--font-mono)",
-                    fontSize: "0.65rem",
+                    fontSize: "0.75rem",
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
                     color: "var(--color-muted-light)",
@@ -220,7 +220,7 @@ export default function Pricing() {
                 <div
                   style={{
                     fontFamily: "var(--font-mono)",
-                    fontSize: "0.65rem",
+                    fontSize: "0.75rem",
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
                     color: "var(--color-muted)",
@@ -292,7 +292,7 @@ export default function Pricing() {
             padding: "1rem 1.25rem",
             marginTop: "2px",
             fontFamily: "var(--font-mono)",
-            fontSize: "0.65rem",
+            fontSize: "0.75rem",
             letterSpacing: "0.12em",
             textTransform: "uppercase",
             color: "var(--color-muted-light)",
