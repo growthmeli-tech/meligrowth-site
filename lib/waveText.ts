@@ -5,7 +5,8 @@ const CHAR_DUR   = 0.36; // per-character tween duration
 
 export function initWave(el: HTMLElement): void {
   if (el.dataset.waveReady === "1") return;
-  el.dataset.waveReady = "1";
+  el.dataset.waveReady = "1"; 
+  
 
   // Only split direct text nodes — leaves SVG / img children untouched
   const textNodes: Text[] = [];
