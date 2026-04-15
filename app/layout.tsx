@@ -4,6 +4,7 @@ import Script from "next/script";
 import CustomCursor from "@/components/CustomCursor";
 import WaveInit from "@/components/WaveInit";
 import { faqs } from "@/lib/data";
+import { GOOGLE_ADS_ID } from "@/lib/tracking";
 import "./globals.css";
 
 const bebasNeue = Bebas_Neue({
@@ -138,7 +139,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es-AR" className={`${bebasNeue.variable} ${dmSans.variable}`}>
-      <head />
+      <head>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-tag" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+window.gtag = gtag;
+gtag('js', new Date());
+gtag('config', '${GOOGLE_ADS_ID}');`}
+        </Script>
+      </head>
       <body className="antialiased">
         <a href="#main-content" className="skip-link">
           Ir al contenido principal
@@ -146,16 +159,6 @@ export default function RootLayout({
         <CustomCursor />
         <WaveInit />
         {children}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-18871571491"
-          strategy="afterInteractive"
-        />
-        <Script id="google-ads" strategy="afterInteractive">
-          {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'AW-18871571491');`}
-        </Script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

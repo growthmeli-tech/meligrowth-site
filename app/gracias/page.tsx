@@ -2,10 +2,48 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import {
+  LAST_FIRED_CONVERSION_KEY,
+  PENDING_CONVERSION_KEY,
+  trackGoogleAdsConversion,
+} from "@/lib/tracking";
 
 export default function GraciasPage() {
   const router = useRouter();
   const [count, setCount] = useState(5);
+
+  useEffect(() => {
+    let cancelled = false;
+    let attempts = 0;
+    const maxAttempts = 12;
+    const delayMs = 400;
+
+    const tryTrack = () => {
+      if (cancelled) return;
+
+      const pendingConversion = sessionStorage.getItem(PENDING_CONVERSION_KEY);
+      const lastTrackedConversion = sessionStorage.getItem(LAST_FIRED_CONVERSION_KEY);
+
+      if (!pendingConversion || pendingConversion === lastTrackedConversion) return;
+
+      const didTrack = trackGoogleAdsConversion();
+      if (didTrack) {
+        sessionStorage.setItem(LAST_FIRED_CONVERSION_KEY, pendingConversion);
+        sessionStorage.removeItem(PENDING_CONVERSION_KEY);
+        return;
+      }
+
+      attempts += 1;
+      if (attempts < maxAttempts) {
+        window.setTimeout(tryTrack, delayMs);
+      }
+    };
+
+    tryTrack();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     if (count === 0) {

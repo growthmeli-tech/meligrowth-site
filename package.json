@@ -2,6 +2,21 @@
   "name": "mlgrowth",
   "version": "0.1.0",
   "private": true,
+  "description": "",
+  "homepage": "https://github.com/growthmeli-tech/meligrowth-site#readme",
+  "bugs": {
+    "url": "https://github.com/growthmeli-tech/meligrowth-site/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/growthmeli-tech/meligrowth-site.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

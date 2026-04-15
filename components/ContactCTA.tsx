@@ -1,25 +1,52 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import SectionHeader from "@/components/ui/SectionHeader";
+import {
+  CALENDLY_INTENT_KEY,
+  PENDING_CONVERSION_KEY,
+  trackGoogleEvent,
+} from "@/lib/tracking";
 
 export default function ContactCTA() {
+  const router = useRouter();
   const sectionRef = useRef<HTMLElement>(null);
   const [calendlyHeight, setCalendlyHeight] = useState<number | undefined>(undefined);
 
   useEffect(() => {
     const handler = (e: MessageEvent) => {
       if (e.origin !== "https://calendly.com") return;
+
       const height = e.data?.payload?.height;
       if (height && height > 0) {
         setCalendlyHeight(height);
       }
+
+      const calendlyEvent = e.data?.event;
+      if (calendlyEvent === "calendly.date_and_time_selected") {
+        const alreadyTracked = sessionStorage.getItem(CALENDLY_INTENT_KEY);
+        if (!alreadyTracked) {
+          trackGoogleEvent("calendly_date_time_selected", {
+            event_category: "engagement",
+            event_label: "embedded_calendly",
+          });
+          sessionStorage.setItem(CALENDLY_INTENT_KEY, "true");
+        }
+      }
+
+      if (calendlyEvent === "calendly.event_scheduled") {
+        sessionStorage.setItem(PENDING_CONVERSION_KEY, `cal-${Date.now()}`);
+        sessionStorage.removeItem(CALENDLY_INTENT_KEY);
+        router.push("/gracias");
+      }
     };
+
     window.addEventListener("message", handler);
     return () => window.removeEventListener("message", handler);
-  }, []);
+  }, [router]);
 
   useGSAP(
     () => {
