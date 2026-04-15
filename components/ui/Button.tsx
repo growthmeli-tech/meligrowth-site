@@ -11,9 +11,11 @@ interface ButtonProps {
   href?: string;
   type?: "button" | "submit";
   full?: boolean;
+  disabled?: boolean;
   children: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;
+  wave?: boolean;
 }
 
 export default function Button({
@@ -21,15 +23,18 @@ export default function Button({
   href,
   type = "button",
   full,
+  disabled,
   children,
   style,
   className,
+  wave = true,
 }: ButtonProps) {
   const baseClass = variant === "primary" ? "btn-primary" : "btn-ghost";
   const combinedClass = [baseClass, className].filter(Boolean).join(" ");
   const fullStyle: React.CSSProperties | undefined = full
     ? { width: "100%", justifyContent: "center", ...style }
     : style;
+  const waveAttr = wave ? { "data-wave": "" } : {};
 
   if (href) {
     const isExternal = href.startsWith("http");
@@ -38,6 +43,7 @@ export default function Button({
         href={href}
         className={combinedClass}
         style={fullStyle}
+        {...waveAttr}
         {...(isExternal ? { target: "_blank", rel: "noreferrer" } : {})}
       >
         {children}
@@ -47,7 +53,7 @@ export default function Button({
   }
 
   return (
-    <button type={type} className={combinedClass} style={fullStyle}>
+    <button type={type} className={combinedClass} style={fullStyle} disabled={disabled} {...waveAttr}>
       {children}
       {variant === "primary" && <ArrowIcon />}
     </button>

@@ -37,16 +37,14 @@ export default function BottomCTA() {
           style={{ marginBottom: "1.25rem" }}
         >
           ¿CUÁNTO ESTÁS DEJANDO DE{" "}
-          <em style={{ fontStyle: "normal", color: "var(--color-accent)" }}>
-            FACTURAR?
-          </em>
+          <em className="text-accent">FACTURAR?</em>
         </h2>
 
         <p
           className="body-regular"
           style={{ margin: "0 auto 2rem", maxWidth: "420px" }}
         >
-          Descubrilo con un diagnóstico gratuito. 48 horas, sin costo, sin compromiso.
+          Descubrilo con un diagnóstico gratuito. En 48 horas, sin costo, sin compromiso.
         </p>
 
         <div style={{ display: "flex", justifyContent: "center" }}>

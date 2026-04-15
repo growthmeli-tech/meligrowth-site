@@ -4,18 +4,21 @@ import Problem from "@/components/Problem";
 import Solution from "@/components/Solution";
 import Process from "@/components/Process";
 import Stats from "@/components/Stats";
+import Proof from "@/components/Proof";
 import Benefits from "@/components/Benefits";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import BottomCTA from "@/components/BottomCTA";
 import ContactCTA from "@/components/ContactCTA";
 import Footer from "@/components/Footer";
+import StickyCTA from "@/components/StickyCTA";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <main>
+      <StickyCTA />
+      <main id="main-content">
         <Hero />
         <div className="section-divider" />
         <Problem />
@@ -24,6 +27,8 @@ export default function Home() {
         <div className="section-divider" />
         <Process />
         <Stats />
+        <div className="section-divider" />
+        <Proof />
         <div className="section-divider" />
         <Benefits />
         <div className="section-divider" />

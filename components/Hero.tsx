@@ -5,15 +5,7 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
-
-const TICKER_ITEMS = [
-  "Operación diaria", "Product Ads", "Brand Ads", "Full + Flex",
-  "Colecta diaria", "Salud de cuenta", "Repricing", "Reportes quincenales",
-  "+38% en ventas", "$1.1M+ facturado", "Reputación Platinum",
-  "Operación diaria", "Product Ads", "Brand Ads", "Full + Flex",
-  "Colecta diaria", "Salud de cuenta", "Repricing", "Reportes quincenales",
-  "+38% en ventas", "$1.1M+ facturado", "Reputación Platinum",
-];
+import { TICKER_ITEMS } from "@/lib/data";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -34,6 +26,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
+      id="hero"
       style={{
         display: "flex",
         flexDirection: "column",
@@ -67,30 +60,19 @@ export default function Hero() {
         >
           {/* ── LEFT ─────────────────────────────────────── */}
           <div>
-            {/* Eyebrow — hero-specific badge with full border + pulse dot */}
-            <div className="hero-badge hero-eyebrow">
-              <span
-                style={{
-                  width: 6, height: 6,
-                  borderRadius: "50%",
-                  background: "#4ade80",
-                  flexShrink: 0,
-                  animation: "pulse-dot 2s ease infinite",
-                }}
-              />
-              Partner oficial · Mercado Libre Argentina
-            </div>
+            {/* Eyebrow */}
+            <div className="sec-label hero-eyebrow">AGENCIA FULL-SERVICE · MERCADO LIBRE</div>
 
             {/* H1 */}
             <h1
               className="heading-h1 hero-h1"
               style={{ marginBottom: "1.25rem" }}
             >
-              OPERAMOS<br />
-              Y ESCALAMOS<br />
+              OPERAMOS Y{" "}
+              <em className="text-accent">ESCALAMOS</em>
+              <br />
               TU NEGOCIO EN<br />
-              MERCADO{" "}
-              <em style={{ fontStyle: "normal", color: "var(--color-accent)" }}>LIBRE</em>
+              MERCADO LIBRE
             </h1>
 
             {/* Sub */}
@@ -126,10 +108,10 @@ export default function Hero() {
               }}
             >
               <Image
-                src="/images/dashboard.png"
+                src="/images/photo-hero.avif"
                 alt="Panel de ventas en Mercado Libre"
-                width={1400}
-                height={1050}
+                width={815}
+                height={414}
                 style={{ width: "100%", height: "auto" }}
                 priority
               />
@@ -155,15 +137,15 @@ export default function Hero() {
                 color: "var(--color-accent)",
                 lineHeight: 1,
                 letterSpacing: "0.02em",
-              }}>$1.1M+</div>
+              }}>+200%</div>
               <div style={{
                 fontFamily: "var(--font-mono)",
-                fontSize: "0.75rem",
+                fontSize: "0.875rem",
                 color: "var(--color-muted-light)",
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 marginTop: "0.375rem",
-              }}>Facturado · 9 meses</div>
+              }}>Crecimiento en ventas</div>
             </div>
 
             {/* Chip: Growth */}
@@ -186,21 +168,22 @@ export default function Hero() {
                 color: "var(--color-accent)",
                 lineHeight: 1,
                 letterSpacing: "0.02em",
-              }}>+38%</div>
+              }}>Platinum</div>
               <div style={{
                 fontFamily: "var(--font-mono)",
-                fontSize: "0.75rem",
+                fontSize: "0.875rem",
                 color: "var(--color-muted-light)",
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 marginTop: "0.375rem",
-              }}>Incremento en ventas</div>
+              }}>Reputación en ML</div>
             </div>
           </div>
         </div>
       </div>
 
       {/* ── Ticker — sits at bottom of 100vh ─────────────── */}
+      <span className="sr-only">Servicios: Operación diaria, Product Ads, Brand Ads, Full y Flex, Colecta diaria, Salud de cuenta, Repricing, Reportes quincenales.</span>
       <div className="ticker-bar" aria-hidden="true">
         <div className="ticker-inner">
           {TICKER_ITEMS.map((item, i) => (

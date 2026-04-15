@@ -2,13 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "@/lib/gsap";
-import Button from "@/components/ui/Button";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const ref = useRef<HTMLElement>(null);
+  const lastY = useRef(0);
 
   useEffect(() => {
+    if (!ref.current) return;
     gsap.from(ref.current, {
       y: -20,
       opacity: 0,
@@ -19,7 +21,16 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 40);
+    const fn = () => {
+      const y = window.scrollY;
+      setScrolled(y > 40);
+      if (y > 80) {
+        setHidden(y > lastY.current);
+      } else {
+        setHidden(false);
+      }
+      lastY.current = y;
+    };
     window.addEventListener("scroll", fn, { passive: true });
     return () => window.removeEventListener("scroll", fn);
   }, []);
@@ -33,7 +44,8 @@ export default function Header() {
         left: 0,
         right: 0,
         zIndex: 50,
-        transition: "background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease",
+        transform: hidden ? "translateY(-100%)" : "translateY(0)",
+        transition: "transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease",
         background: scrolled ? "rgba(10,10,10,0.94)" : "transparent",
         backdropFilter: scrolled ? "blur(20px)" : "none",
         borderBottom: scrolled ? "1px solid #1e1e1e" : "1px solid transparent",
@@ -50,21 +62,15 @@ export default function Header() {
           }}
         >
           <a href="#" style={{ textDecoration: "none" }}>
-            <span
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "1.75rem",
-                fontWeight: 400,
-                letterSpacing: "0.04em",
-                color: "var(--color-text)",
-                lineHeight: 1,
-              }}
-            >
-              ML <span style={{ color: "var(--color-accent)" }}>GROWTH</span>
-            </span>
+            <img
+              src="/images/logo.svg"
+              alt="Meli Growth"
+              className="header-logo"
+              style={{ height: "22px", width: "auto", display: "block" }}
+            />
           </a>
 
-          <nav className="header-nav" style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
+          <nav className="header-nav" aria-label="Navegación principal" style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
             {[
               { label: "Servicios", href: "#solucion" },
               { label: "Proceso", href: "#como-funciona" },
@@ -76,6 +82,7 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 className="header-link"
+                data-wave
                 style={{
                   fontFamily: "var(--font-mono)",
                   fontSize: "0.65rem",
@@ -83,13 +90,11 @@ export default function Header() {
                   textTransform: "uppercase",
                   color: "var(--color-muted-light)",
                   textDecoration: "none",
-                  transition: "color 0.2s ease",
                 }}
               >
                 {link.label}
               </a>
             ))}
-            <Button href="#contacto">Diagnóstico gratis</Button>
           </nav>
         </div>
       </div>

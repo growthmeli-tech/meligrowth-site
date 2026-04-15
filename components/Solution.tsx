@@ -4,67 +4,9 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import Image from "next/image";
-import SectionLabel from "@/components/ui/SectionLabel";
-
-const pillars = [
-  {
-    num: "01",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-    title: "Operación",
-    subtitle: "Tu cuenta, en manos expertas",
-    description: "Nos hacemos cargo del día a día para que vos puedas enfocarte en lo que importa: crecer.",
-    bullets: [
-      "Atención al cliente 7 días",
-      "Gestión de publicaciones y stock",
-      "Salud de cuenta y métricas de reputación",
-      "Respuesta a reclamos y mediaciones",
-    ],
-    image: "/images/dashboard2.png",
-  },
-  {
-    num: "02",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-    title: "Crecimiento",
-    subtitle: "Más ventas, más rentabilidad",
-    description: "Estrategia de publicidad y contenido orientada a resultados medibles, no a vanity metrics.",
-    bullets: [
-      "Product Ads y Brand Ads gestionados",
-      "Optimización de ACOS / ROAS",
-      "Contenido visual de producto",
-      "Catálogo y fichas optimizadas",
-    ],
-    image: "/images/dashboard3-v2.png",
-  },
-  {
-    num: "03",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-        <rect x="1" y="3" width="15" height="13" rx="1" stroke="currentColor" strokeWidth="1.8" />
-        <path d="M16 8l4 2v5h-4V8z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-        <circle cx="5.5" cy="18.5" r="1.5" stroke="currentColor" strokeWidth="1.8" />
-        <circle cx="18.5" cy="18.5" r="1.5" stroke="currentColor" strokeWidth="1.8" />
-      </svg>
-    ),
-    title: "Infraestructura",
-    subtitle: "Logística y números claros",
-    description: "Full, Flex y contabilidad operando en sincronía. Sin cuellos de botella, sin sorpresas.",
-    bullets: [
-      "Depósito especializado para Full",
-      "Colecta diaria · Flex integrado",
-      "Reportes quincenales de rentabilidad",
-      "Contabilidad e informes de gestión",
-    ],
-    image: "/images/dashboard4.png",
-  },
-];
+import SectionHeader from "@/components/ui/SectionHeader";
+import FeatureList from "@/components/ui/FeatureList";
+import { pillars } from "@/lib/data";
 
 export default function Solution() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -103,46 +45,20 @@ export default function Solution() {
       }}
     >
       <div className="container">
-        {/* Header */}
-        <div className="solution-header" style={{ marginBottom: "clamp(2.5rem, 5vw, 4rem)" }}>
-          <SectionLabel>[02] — La Solución</SectionLabel>
-          <h2 className="headline" style={{ maxWidth: "560px" }}>
-            TODO LO QUE NECESITA<br />
-            <em style={{ fontStyle: "normal", color: "var(--color-accent)" }}>
-              TU CUENTA,
-            </em>{" "}
-            EN UN SOLO LUGAR
-          </h2>
-        </div>
 
-        {/* 3-pillar grid */}
-        <div
-          className="pillars-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "2px",
-            background: "var(--color-border)",
-          }}
-        >
+        <SectionHeader
+          label="[02] — La Solución"
+          title={<>TODO LO QUE NECESITA<br /><em className="text-accent">TU CUENTA,</em>{" "}EN UN SOLO LUGAR</>}
+          maxWidth="560px"
+          className="solution-header"
+        />
+
+        <div className="pillars-grid grid-3">
           {pillars.map((p) => (
-            <div
-              key={p.num}
-              className="pillar-card"
-              style={{
-                background: "var(--color-bg)",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              {/* Card image */}
+            <div key={p.num} className="pillar-card" style={{ background: "var(--color-bg)", display: "flex", flexDirection: "column" }}>
               <div
                 className="img-scan"
-                style={{
-                  borderBottom: "1px solid var(--color-border)",
-                  height: "200px",
-                  overflow: "hidden",
-                }}
+                style={{ borderBottom: "1px solid var(--color-border)", height: "200px", overflow: "hidden" }}
               >
                 <Image
                   src={p.image}
@@ -153,80 +69,22 @@ export default function Solution() {
                 />
               </div>
 
-              {/* Card body */}
               <div style={{ padding: "clamp(1.25rem, 2.5vw, 1.75rem)", flex: 1, display: "flex", flexDirection: "column" }}>
-                {/* Icon + num row */}
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    marginBottom: "1.25rem",
-                  }}
-                >
-                  <div className="svc-icon" style={{ color: "var(--color-accent)" }}>
-                    {p.icon}
-                  </div>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.75rem",
-                      letterSpacing: "0.16em",
-                      color: "var(--color-muted)",
-                    }}
-                  >
-                    {p.num}
-                  </span>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1.25rem" }}>
+                  <div className="svc-icon" style={{ color: "var(--color-accent)" }}>{p.icon}</div>
+                  <span className="mono-label">{p.num}</span>
                 </div>
 
-                {/* Title */}
-                <h3 className="heading-h3" style={{ marginBottom: "0.875rem" }}>
-                  {p.title.toUpperCase()}
-                </h3>
+                <h3 className="heading-h3" style={{ marginBottom: "0.875rem" }}>{p.title.toUpperCase()}</h3>
 
-                {/* Description */}
-                <p className="body-regular" style={{ marginBottom: "1.25rem" }}>
-                  {p.description}
-                </p>
+                <p className="body-regular" style={{ marginBottom: "1.25rem" }}>{p.description}</p>
 
-                {/* Bullet list */}
-                <ul
-                  style={{
-                    listStyle: "none",
-                    padding: 0,
-                    margin: 0,
-                    marginTop: "auto",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.5rem",
-                    borderTop: "1px solid var(--color-border)",
-                    paddingTop: "1rem",
-                  }}
-                >
-                  {p.bullets.map((b) => (
-                    <li
-                      key={b}
-                      className="body-regular"
-                      style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem" }}
-                    >
-                      <span
-                        style={{
-                          color: "var(--color-accent)",
-                          flexShrink: 0,
-                          marginTop: "0.15rem",
-                          fontSize: "0.75rem",
-                        }}
-                      >
-                        ▸
-                      </span>
-                      {b}
-                    </li>
-                  ))}
-                </ul>
+                <FeatureList items={p.bullets} hasDivider />
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
