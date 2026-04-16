@@ -24,8 +24,8 @@ export const problems = [
     detail: "La cuenta depende de la gestión diaria de urgencias, sin estructura que permita escalar de forma ordenada.",
   },
   {
-    title: "La inversión en Ads no está controlada",
-    detail: "Campañas activas sin criterios claros de rentabilidad, con impacto directo en el margen.",
+    title: "La inversión en Ads no es eficiente",
+    detail: "Campañas activas sin criterios claros de retorno, con impacto directo en el margen.",
   },
 ];
 
