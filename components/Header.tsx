@@ -72,11 +72,11 @@ export default function Header() {
 
           <nav className="header-nav" aria-label="Navegación principal" style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
             {[
-              { label: "Servicios", href: "#solucion" },
-              { label: "Proceso", href: "#como-funciona" },
-              { label: "Resultados", href: "#estadisticas" },
-              { label: "Precios", href: "#precios" },
-              { label: "FAQ", href: "#faq" },
+              { label: "Dolores", href: "#problema" },
+              { label: "Solución", href: "#solucion" },
+              { label: "Resultados", href: "#resultados-reales" },
+              { label: "Modelo", href: "#precios" },
+              { label: "Agendar", href: "#contacto" },
             ].map((link) => (
               <a
                 key={link.href}

@@ -114,7 +114,7 @@ a:focus:not(:focus-visible) {
 }
 
 .section-padding {
-  padding-block: clamp(80px, 10vw, 130px);
+  padding-block: clamp(64px, 8vw, 108px);
 }
 
 /* ─── Background Textures ────────────────────────────────── */
@@ -496,6 +496,55 @@ a:focus:not(:focus-visible) {
   padding: 0.3rem 0.65rem;
 }
 
+/* ─── Process Timeline ──────────────────────────────────── */
+
+.process-timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--color-border);
+}
+
+.process-timeline::before {
+  content: "";
+  position: absolute;
+  top: calc(clamp(1.5rem, 2.5vw, 2rem) + 1.25rem);
+  left: 16.666%;
+  right: 16.666%;
+  height: 1px;
+  background: var(--color-accent);
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.process-timeline-item {
+  position: relative;
+  z-index: 2;
+  background: var(--color-surface);
+  padding: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+.process-dot {
+  position: relative;
+  z-index: 4;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 24px rgba(255, 214, 0, 0.35);
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
 /* ─── Grid Layouts ───────────────────────────────────────── */
 
 /* Border-gap grids — gap: 2px filled by parent background */
@@ -694,30 +743,36 @@ select.form-input { cursor: pointer; }
   .problem-grid { grid-template-columns: 1fr 1fr !important; }
 
   .pillars-grid { grid-template-columns: 1fr !important; row-gap: clamp(1.25rem, 3vw, 1.75rem) !important; }
+  .proof-grid { grid-template-columns: repeat(2, 1fr) !important; row-gap: 2px !important; }
+  .process-timeline { grid-template-columns: 1fr !important; row-gap: 2px !important; }
+  .process-timeline::before {
+    top: calc(1.5rem + 1.25rem);
+    bottom: calc(1.5rem + 1.25rem);
+    left: calc(clamp(1.5rem, 2.5vw, 2rem) + 1.25rem);
+    right: auto;
+    width: 1px;
+    height: auto;
+  }
+  .process-timeline-item { padding-left: clamp(4.75rem, 12vw, 5.5rem) !important; }
+  .process-dot {
+    position: absolute;
+    top: clamp(1.5rem, 2.5vw, 2rem);
+    left: clamp(1.5rem, 2.5vw, 2rem);
+    margin-bottom: 0;
+  }
   .pricing-grid { grid-template-columns: 1fr !important; row-gap: clamp(1.25rem, 3vw, 1.75rem) !important; }
-  .steps-grid { grid-template-columns: repeat(2, 1fr) !important; }
   .cta-grid { grid-template-columns: 1fr !important; }
-
-  /* Benefits — stack to single column */
-  .benefits-grid { grid-template-columns: 1fr !important; row-gap: clamp(1.25rem, 3vw, 1.75rem) !important; }
 }
 
 @media (max-width: 768px) {
   .footer-grid { grid-template-columns: 1fr !important; }
-  .stats-band-inner { grid-template-columns: 1fr !important; }
 
   /* CTA perks: 1 col on tablet/mobile */
   .cta-perks-grid { grid-template-columns: 1fr !important; }
-
-  /* Stats: hide entire timeline wrapper (lines + dots), show content in 2×2 */
-  .stats-timeline-wrapper { display: none !important; }
-  .cp-content-grid { grid-template-columns: repeat(2, 1fr) !important; row-gap: clamp(2.5rem, 5vw, 3.5rem) !important; }
 }
 
 @media (max-width: 640px) {
-  .faq-grid { grid-template-columns: 1fr !important; row-gap: clamp(1.25rem, 3vw, 1.75rem) !important; }
-  .proof-grid { grid-template-columns: 1fr !important; row-gap: 2px !important; }
-  .stats-cells { grid-template-columns: repeat(2, 1fr) !important; }
+  .proof-grid { grid-template-columns: repeat(2, 1fr) !important; row-gap: 2px !important; }
 
   /* All eyebrows uniform size on mobile */
   .sec-label, .eyebrow-light { font-size: 0.75rem; }
@@ -728,21 +783,14 @@ select.form-input { cursor: pointer; }
   /* Hero: CTA buttons stack full-width */
   .hero-ctas { flex-direction: column; }
   .hero-ctas > * { width: 100%; justify-content: center; }
-
-  /* Stats: add edge padding when full-bleed */
-  .stats-cells { padding-inline: clamp(1.25rem, 4vw, 3rem); }
 }
 
 @media (max-width: 520px) {
   .problem-grid { grid-template-columns: 1fr !important; row-gap: clamp(1.25rem, 3vw, 1.75rem) !important; }
-  .steps-grid { grid-template-columns: 1fr !important; row-gap: clamp(1.25rem, 3vw, 1.75rem) !important; }
 }
 
 @media (max-width: 480px) {
   .cta-form-cols { grid-template-columns: 1fr !important; }
-
-  /* Stats: single column on small phones */
-  .cp-content-grid { grid-template-columns: 1fr !important; row-gap: clamp(2rem, 5vw, 3rem) !important; }
 
   /* Compact buttons — maintain 44px touch target */
   .btn-primary, .btn-ghost { padding: 0.8rem 1.25rem; font-size: 0.75rem; min-height: 44px; }
@@ -758,9 +806,6 @@ select.form-input { cursor: pointer; }
 @media (max-width: 400px) {
   /* Tighter eyebrow spacing */
   .sec-label, .eyebrow-light { margin-bottom: 1rem; }
-
-  /* Stats: single column on very small screens */
-  .stats-cells { grid-template-columns: 1fr !important; }
 }
 
 /* ─── Reduced motion ─────────────────────────────────────── */

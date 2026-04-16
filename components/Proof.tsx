@@ -3,45 +3,32 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
-import Image from "next/image";
 import SectionHeader from "@/components/ui/SectionHeader";
 
 const proofCards = [
   {
-    num: "01",
-    image: "/images/section5-1.avif",
     stat: "9.62x",
     counterTo: 9.62, prefix: "", suffix: "x", decimals: 2,
     label: "ROAS",
-    copy: "Tu publicidad con nosotros sí tiene ROI. ACOS 10.39% — cada peso invertido en ads trabaja.",
-    alt: "Dashboard de publicidad — ROAS 9.62x, ACOS 10.39%, febrero 2026",
+    copy: "Inversión publicitaria decidida por retorno y margen.",
   },
   {
-    num: "02",
-    image: "/images/section5-2.avif",
     stat: "59.2%",
     counterTo: 59.2, prefix: "", suffix: "%", decimals: 1,
     label: "CONVERSIÓN",
-    copy: "De intención de compra a venta efectiva. Publicaciones optimizadas para que quien llega, compre.",
-    alt: "Embudo de conversión — 59.2% de tasa de cierre",
+    copy: "Más ventas con el tráfico que la cuenta ya recibe.",
   },
   {
-    num: "03",
-    image: "/images/section5-3.avif",
     stat: "+28,9%",
     counterTo: 28.9, prefix: "+", suffix: "%", decimals: 1,
     label: "CRECIMIENTO",
-    copy: "Crecimiento de ventas brutas respecto al período anterior. Es el resultado de optimización y gestión constante.",
-    alt: "Resumen de desempeño — crecimiento +5.760% en ventas brutas",
+    copy: "Crecimiento sostenido con gestión diaria del canal.",
   },
   {
-    num: "04",
-    image: "/images/section5-4.avif",
     stat: "$47M",
     counterTo: 47, prefix: "$", suffix: "M", decimals: 0,
     label: "EN UN MES",
-    copy: "Un único SKU, un único mes, bien operado. Así se ve una publicación optimizada al máximo. No es promesa son datos.",
-    alt: "Dashboard de ventas — $47M en febrero 2026",
+    copy: "Publicación, pricing, tráfico y logística alineados.",
   },
 ];
 
@@ -111,41 +98,30 @@ export default function Proof() {
 
         <div className="proof-header">
           <SectionHeader
-            label="[05] — Resultados Reales"
-            title={<>NÚMEROS QUE HABLAN{" "}<em className="text-accent">POR SÍ SOLOS</em></>}
+            label="[03] — Prueba / Resultados"
+            title={<>RESULTADOS.<br /><em className="text-accent">NO PROMESAS.</em></>}
             maxWidth="640px"
           />
           <p className="body-regular" style={{ marginTop: "-1.5rem", marginBottom: "clamp(2rem, 4vw, 3rem)" }}>
-            Datos reales de una cuenta que gestionamos. Sin filtros.
+            Métricas obtenidas en cuentas operadas.
+            <br />
+            El enfoque: crecimiento con rentabilidad.
           </p>
         </div>
 
-        <div className="proof-grid grid-2">
+        <div className="proof-grid grid-4">
           {proofCards.map((card, i) => (
             <div
-              key={card.num}
-              className="proof-card"
-              style={{ background: "var(--color-bg)", display: "flex", flexDirection: "column" }}
+              key={card.label}
+              className="proof-card card-base-bg"
+              style={{ borderTop: "3px solid var(--color-accent)", minHeight: "100%" }}
             >
-              <div style={{ borderBottom: "1px solid var(--color-border)" }}>
-                <Image
-                  src={card.image}
-                  alt={card.alt}
-                  width={1482}
-                  height={804}
-                  style={{ width: "100%", height: "auto", display: "block" }}
-                />
+              <div className={`stat-num proof-stat-${i}`} style={{ marginBottom: "0.35rem" }}>
+                {card.stat}
               </div>
-
-              <div style={{ padding: "clamp(1.25rem, 2.5vw, 1.75rem)" }}>
-                <span className="mono-label">{card.num}</span>
-                <div className={`stat-num proof-stat-${i}`} style={{ marginTop: "0.5rem", marginBottom: "0.25rem" }}>
-                  {card.stat}
-                </div>
-                <div className="mono-label">{card.label}</div>
-                <hr className="row-divider" style={{ margin: "1.25rem 0" }} />
-                <p className="body-regular" style={{ margin: 0 }}>{card.copy}</p>
-              </div>
+              <div className="mono-label">{card.label}</div>
+              <hr className="row-divider" style={{ margin: "1rem 0" }} />
+              <p className="body-regular" style={{ margin: 0 }}>{card.copy}</p>
             </div>
           ))}
         </div>

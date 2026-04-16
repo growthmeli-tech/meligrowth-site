@@ -68,11 +68,9 @@ export default function Hero() {
               className="heading-h1 hero-h1"
               style={{ marginBottom: "1.25rem" }}
             >
-              OPERAMOS Y{" "}
-              <em className="text-accent">ESCALAMOS</em>
+              OPERAMOS Y ESCALAMOS TU CANAL DE MERCADO LIBRE
               <br />
-              TU NEGOCIO EN<br />
-              MERCADO LIBRE
+              CON FOCO EN <em className="text-accent">RENTABILIDAD.</em>
             </h1>
 
             {/* Sub */}
@@ -80,10 +78,11 @@ export default function Hero() {
               className="body-lg hero-sub"
               style={{ maxWidth: "460px", marginBottom: "2rem" }}
             >
-              Más ventas, mejor rentabilidad y una cuenta saludable —{" "}
-              <strong style={{ color: "var(--color-text)", fontWeight: 400 }}>
-                sin que tengas que operarla vos.
-              </strong>
+              Para marcas y vendedores que ya facturan y necesitan
+              <br />
+              más ventas, mejor conversión y control real del margen,
+              <br />
+              sin sumar carga operativa.
             </p>
 
             {/* CTAs */}
@@ -91,8 +90,8 @@ export default function Hero() {
               className="hero-ctas"
               style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}
             >
-              <Button href="#contacto">Pedí tu diagnóstico gratis</Button>
-              <Button variant="ghost" href="#como-funciona">Ver cómo funciona</Button>
+              <Button href="#contacto">Agendar diagnóstico</Button>
+              <Button variant="ghost" href="#resultados-reales">Ver resultados</Button>
             </div>
           </div>
 
@@ -168,7 +167,7 @@ export default function Hero() {
                 color: "var(--color-accent)",
                 lineHeight: 1,
                 letterSpacing: "0.02em",
-              }}>Platinum</div>
+              }}>$47M</div>
               <div style={{
                 fontFamily: "var(--font-mono)",
                 fontSize: "0.875rem",
@@ -176,7 +175,7 @@ export default function Hero() {
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 marginTop: "0.375rem",
-              }}>Reputación en ML</div>
+              }}>En un mes · 1 SKU</div>
             </div>
           </div>
         </div>

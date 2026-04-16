@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
-import Image from "next/image";
 import SectionHeader from "@/components/ui/SectionHeader";
 import FeatureList from "@/components/ui/FeatureList";
 import { pillars } from "@/lib/data";
@@ -48,31 +47,22 @@ export default function Solution() {
 
         <SectionHeader
           label="[02] — La Solución"
-          title={<>TODO LO QUE NECESITA<br /><em className="text-accent">TU CUENTA,</em>{" "}EN UN SOLO LUGAR</>}
-          maxWidth="560px"
+          title={<>NO SOMOS UNA CONSULTORA.<br /><em className="text-accent">OPERAMOS EL CANAL.</em></>}
+          maxWidth="680px"
           className="solution-header"
         />
+        <p className="body-regular" style={{ marginTop: "-1.5rem", marginBottom: "clamp(2rem, 4vw, 3rem)", maxWidth: "560px" }}>
+          Nos integramos en la operación diaria y tomamos decisiones
+          <br />
+          con foco en facturación, conversión y rentabilidad.
+        </p>
 
         <div className="pillars-grid grid-3">
           {pillars.map((p) => (
-            <div key={p.num} className="pillar-card" style={{ background: "var(--color-bg)", display: "flex", flexDirection: "column" }}>
-              <div
-                className="img-scan"
-                style={{ borderBottom: "1px solid var(--color-border)", height: "200px", overflow: "hidden" }}
-              >
-                <Image
-                  src={p.image}
-                  alt={p.title}
-                  width={1200}
-                  height={700}
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                />
-              </div>
-
+            <div key={p.title} className="pillar-card" style={{ background: "var(--color-bg)", display: "flex", flexDirection: "column" }}>
               <div style={{ padding: "clamp(1.25rem, 2.5vw, 1.75rem)", flex: 1, display: "flex", flexDirection: "column" }}>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1.25rem" }}>
+                <div style={{ display: "flex", alignItems: "center", marginBottom: "1.25rem" }}>
                   <div className="svc-icon" style={{ color: "var(--color-accent)" }}>{p.icon}</div>
-                  <span className="mono-label">{p.num}</span>
                 </div>
 
                 <h3 className="heading-h3" style={{ marginBottom: "0.875rem" }}>{p.title.toUpperCase()}</h3>

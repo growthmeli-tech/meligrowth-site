@@ -118,7 +118,7 @@ export default function StickyCTA() {
           boxShadow: "0 8px 32px rgba(255,214,0,0.35), 0 2px 8px rgba(0,0,0,0.4)",
         }}
       >
-        Pedí tu diagnóstico gratis
+        Agendar diagnóstico
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
           <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>

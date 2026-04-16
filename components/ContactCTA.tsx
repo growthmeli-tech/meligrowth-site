@@ -77,14 +77,16 @@ export default function ContactCTA() {
       <div className="container">
         <div style={{ marginBottom: "2rem" }}>
           <SectionHeader
-            label="[09] — Empezá Hoy"
-            title={<>¿LISTO PARA ESCALAR<br /><em className="text-accent">TU CUENTA?</em></>}
+            label="[06] — CTA Final"
+            title={<>SI TU CUENTA YA FACTURA,<br />EL PRÓXIMO PASO ES HACERLA{" "}<em className="text-accent">MÁS RENTABLE.</em></>}
             className="cta-headline"
           />
         </div>
 
         <p className="body-lg" style={{ marginBottom: "2.5rem", maxWidth: "560px", color: "var(--color-muted)" }}>
-          Elegí el día y horario que mejor te quede. La reunión es por videollamada y dura 30 minutos. Sin costo, sin compromiso.
+          Coordiná una reunión de diagnóstico.
+          <br />
+          Analizamos tu cuenta y definimos si hay potencial real de mejora.
         </p>
 
         <div className="cta-calendly" style={{ overflow: "hidden", height: calendlyHeight ?? "auto" }}>
