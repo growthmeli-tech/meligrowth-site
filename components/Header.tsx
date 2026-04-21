@@ -23,8 +23,11 @@ export default function Header() {
   useEffect(() => {
     const fn = () => {
       const y = window.scrollY;
+      const isMobile = window.matchMedia("(max-width: 860px)").matches;
       setScrolled(y > 40);
-      if (y > 80) {
+      if (isMobile) {
+        setHidden(false);
+      } else if (y > 80) {
         setHidden(y > lastY.current);
       } else {
         setHidden(false);
@@ -68,6 +71,10 @@ export default function Header() {
               className="header-logo"
               style={{ height: "22px", width: "auto", display: "block" }}
             />
+          </a>
+
+          <a href="#contacto" className="header-mobile-cta">
+            Agendar diagnóstico
           </a>
 
           <nav className="header-nav" aria-label="Navegación principal" style={{ display: "flex", alignItems: "center", gap: "2rem" }}>

@@ -645,6 +645,25 @@ a:focus:not(:focus-visible) {
   align-items: center;
 }
 
+.header-mobile-cta {
+  display: none;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: var(--color-accent);
+  color: #000;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  padding: 0 0.9rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 /* ─── Form Label ─────────────────────────────────────────── */
 
 .form-label { display: block; font-family: var(--font-mono); font-size: 1rem; color: var(--color-muted-light); margin-bottom: 0.5rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.14em; }
@@ -752,6 +771,15 @@ select.form-input { cursor: pointer; }
 /* ─── Header nav ─────────────────────────────────────────── */
 .header-link:hover { color: var(--color-text) !important; }
 
+/* ─── Hero composition ───────────────────────────────────── */
+.hero-section {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.hero-mobile-line { display: inline; }
+.hero-desktop-break { display: block; }
+
 /* ─── Sticky CTA — hide on mobile, WA button covers it ───── */
 @media (max-width: 640px) {
   .sticky-cta-bar { display: none !important; }
@@ -761,6 +789,7 @@ select.form-input { cursor: pointer; }
 
 @media (max-width: 860px) {
   .header-nav .header-link { display: none !important; }
+  .header-mobile-cta { display: inline-flex; }
 
   .hero-grid { grid-template-columns: 1fr !important; }
   .hero-chip { display: none !important; }
@@ -801,6 +830,54 @@ select.form-input { cursor: pointer; }
 
   .problem-header .headline { font-size: clamp(2rem, 9vw, 2.75rem); }
 
+  .hero-section {
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+
+  #hero-main {
+    align-items: flex-start !important;
+    padding-top: clamp(92px, 17svh, 116px) !important;
+    padding-bottom: clamp(1.25rem, 5svh, 2rem) !important;
+  }
+
+  .hero-h1 {
+    max-width: 21rem;
+    font-size: clamp(3.05rem, 14vw, 4.15rem);
+    line-height: 0.88;
+    letter-spacing: 0.01em;
+    text-wrap: initial;
+    margin-bottom: clamp(0.9rem, 3svh, 1.15rem) !important;
+  }
+
+  .hero-mobile-line {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .hero-profit-line {
+    display: inline-block;
+  }
+
+  .hero-desktop-break,
+  .hero-sub-break {
+    display: none;
+  }
+
+  .hero-sub {
+    max-width: 20.5rem !important;
+    font-size: 0.98rem;
+    line-height: 1.55;
+    margin-bottom: clamp(1.1rem, 4svh, 1.55rem) !important;
+    text-wrap: pretty;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    margin-bottom: clamp(0.8rem, 3svh, 1.05rem);
+  }
+
   /* All eyebrows uniform size on mobile */
   .sec-label, .eyebrow-light { font-size: 0.75rem; }
 
@@ -808,7 +885,7 @@ select.form-input { cursor: pointer; }
   .section-padding { padding-block: clamp(48px, 8vw, 80px); }
 
   /* Hero: CTA buttons stack full-width */
-  .hero-ctas { flex-direction: column; }
+  .hero-ctas { flex-direction: column; gap: 0.65rem !important; }
   .hero-ctas > * { width: 100%; justify-content: center; }
 }
 
@@ -825,6 +902,12 @@ select.form-input { cursor: pointer; }
   /* Compact header */
   .header-inner { height: 56px !important; }
   .header-logo { height: 18px !important; }
+  .header-mobile-cta {
+    min-height: 44px;
+    padding-inline: 0.78rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+  }
 
   /* Trust rows: stack label + detail */
   .cta-trust-row { grid-template-columns: 1fr !important; gap: 0.25rem !important; }
@@ -833,6 +916,34 @@ select.form-input { cursor: pointer; }
 @media (max-width: 400px) {
   /* Tighter eyebrow spacing */
   .sec-label, .eyebrow-light { margin-bottom: 1rem; }
+
+  .hero-h1 {
+    max-width: 19rem;
+    font-size: clamp(2.75rem, 13.4vw, 3.45rem);
+  }
+
+  .hero-sub {
+    max-width: 19rem !important;
+    font-size: 0.94rem;
+  }
+
+  .header-mobile-cta {
+    padding-inline: 0.68rem;
+    font-size: 0.64rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .header-logo { height: 16px !important; }
+  .hero-eyebrow {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+  }
+  .header-mobile-cta {
+    padding-inline: 0.55rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.045em;
+  }
 }
 
 /* ─── Reduced motion ─────────────────────────────────────── */

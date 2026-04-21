@@ -27,6 +27,7 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="hero"
+      className="hero-section"
       style={{
         display: "flex",
         flexDirection: "column",
@@ -40,6 +41,7 @@ export default function Hero() {
       {/* Main content — fills remaining height after ticker */}
       <div
         className="container"
+        id="hero-main"
         style={{
           flex: 1,
           display: "flex",
@@ -68,9 +70,12 @@ export default function Hero() {
               className="heading-h1 hero-h1"
               style={{ marginBottom: "1.25rem" }}
             >
-              OPERAMOS Y ESCALAMOS TU CANAL DE MERCADO LIBRE
-              <br />
-              CON FOCO EN <em className="text-accent">RENTABILIDAD.</em>
+              <span className="hero-mobile-line">OPERAMOS Y</span>{" "}
+              <span className="hero-mobile-line">ESCALAMOS TU CANAL</span>{" "}
+              <span className="hero-mobile-line">DE MERCADO LIBRE</span>
+              <br className="hero-desktop-break" />
+              <span className="hero-mobile-line">CON FOCO EN</span>{" "}
+              <em className="text-accent"><span className="hero-mobile-line hero-profit-line">RENTABILIDAD.</span></em>
             </h1>
 
             {/* Sub */}
@@ -78,10 +83,11 @@ export default function Hero() {
               className="body-lg hero-sub"
               style={{ maxWidth: "460px", marginBottom: "2rem" }}
             >
-              Para marcas y vendedores que ya facturan y necesitan
-              <br />
+              Para marcas y vendedores que ya facturan y necesitan{" "}
+              <br className="hero-sub-break" />
               más ventas, mejor conversión y control real del margen,
-              <br />
+              {" "}
+              <br className="hero-sub-break" />
               sin sumar carga operativa.
             </p>
 
