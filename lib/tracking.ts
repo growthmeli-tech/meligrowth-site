@@ -9,8 +9,6 @@ export const GOOGLE_ADS_ID = "AW-18071571491";
 export const GOOGLE_ADS_CONVERSION_LABEL = "icg0CJ6nlpkcEKOYmalD";
 export const GOOGLE_ADS_CONVERSION_SEND_TO = `${GOOGLE_ADS_ID}/${GOOGLE_ADS_CONVERSION_LABEL}`;
 
-export const PENDING_CONVERSION_KEY = "meli_growth_pending_google_ads_conversion";
-export const LAST_FIRED_CONVERSION_KEY = "meli_growth_last_fired_google_ads_conversion";
 export const CALENDLY_INTENT_KEY = "meli_growth_calendly_intent_tracked";
 
 export function trackGoogleEvent(
@@ -22,10 +20,4 @@ export function trackGoogleEvent(
   }
   window.gtag("event", eventName, params);
   return true;
-}
-
-export function trackGoogleAdsConversion() {
-  return trackGoogleEvent("conversion", {
-    send_to: GOOGLE_ADS_CONVERSION_SEND_TO,
-  });
 }

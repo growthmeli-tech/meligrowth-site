@@ -7,16 +7,41 @@ import { gsap } from "@/lib/gsap";
 import SectionHeader from "@/components/ui/SectionHeader";
 import {
   CALENDLY_INTENT_KEY,
-  PENDING_CONVERSION_KEY,
+  GOOGLE_ADS_CONVERSION_SEND_TO,
   trackGoogleEvent,
 } from "@/lib/tracking";
 
 export default function ContactCTA() {
   const router = useRouter();
   const sectionRef = useRef<HTMLElement>(null);
+  const calendlyConversionSentRef = useRef(false);
   const [calendlyHeight, setCalendlyHeight] = useState<number | undefined>(undefined);
 
   useEffect(() => {
+    const isCalendlyScheduledEvent = (event: MessageEvent) => (
+      event.origin === "https://calendly.com" &&
+      event.data &&
+      typeof event.data === "object" &&
+      event.data.event === "calendly.event_scheduled"
+    );
+
+    const sendGoogleAdsConversion = () => {
+      if (calendlyConversionSentRef.current) return;
+
+      if (typeof window.gtag !== "function") {
+        console.warn("[Calendly Conversion] gtag no está disponible");
+        return;
+      }
+
+      calendlyConversionSentRef.current = true;
+
+      window.gtag("event", "conversion", {
+        send_to: GOOGLE_ADS_CONVERSION_SEND_TO,
+      });
+
+      console.log("[Calendly Conversion] Conversión enviada a Google Ads");
+    };
+
     const handler = (e: MessageEvent) => {
       if (e.origin !== "https://calendly.com") return;
 
@@ -37,8 +62,8 @@ export default function ContactCTA() {
         }
       }
 
-      if (calendlyEvent === "calendly.event_scheduled") {
-        sessionStorage.setItem(PENDING_CONVERSION_KEY, `cal-${Date.now()}`);
+      if (isCalendlyScheduledEvent(e)) {
+        sendGoogleAdsConversion();
         sessionStorage.removeItem(CALENDLY_INTENT_KEY);
         router.push("/gracias");
       }
