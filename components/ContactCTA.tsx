@@ -5,36 +5,42 @@ import Script from "next/script";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import SectionHeader from "@/components/ui/SectionHeader";
-import {
-  CALENDLY_INTENT_KEY,
-  GOOGLE_ADS_CONVERSION_SEND_TO,
-  trackGoogleEvent,
-} from "@/lib/tracking";
+import { GOOGLE_ADS_CONVERSION_SEND_TO } from "@/lib/tracking";
 
 const CALENDLY_URL = "https://calendly.com/growthmeli/30min?primary_color=ffda00&hide_gdpr_banner=1&locale=es";
 
 export default function ContactCTA() {
   const sectionRef = useRef<HTMLElement>(null);
   const calendlyConversionSentRef = useRef(false);
+  const calendlyConversionPendingRef = useRef(false);
   const [calendlyHeight, setCalendlyHeight] = useState<number | undefined>(undefined);
 
   useEffect(() => {
-    const isCalendlyScheduledEvent = (event: MessageEvent) => (
-      event.origin === "https://calendly.com" &&
-      event.data &&
-      typeof event.data === "object" &&
-      event.data.event === "calendly.event_scheduled"
-    );
+    const isCalendlyScheduledEvent = (event: MessageEvent) => {
+      return (
+        event.origin === "https://calendly.com" &&
+        event.data &&
+        typeof event.data === "object" &&
+        event.data.event === "calendly.event_scheduled"
+      );
+    };
 
-    const sendGoogleAdsConversion = () => {
+    const sendGoogleAdsConversion = (attempt = 0) => {
       if (calendlyConversionSentRef.current) return;
 
       if (typeof window.gtag !== "function") {
+        if (attempt < 10) {
+          window.setTimeout(() => sendGoogleAdsConversion(attempt + 1), 300);
+          return;
+        }
+
+        calendlyConversionPendingRef.current = false;
         console.warn("[Calendly Conversion] gtag no está disponible");
         return;
       }
 
       calendlyConversionSentRef.current = true;
+      calendlyConversionPendingRef.current = false;
 
       window.gtag("event", "conversion", {
         send_to: GOOGLE_ADS_CONVERSION_SEND_TO,
@@ -53,21 +59,15 @@ export default function ContactCTA() {
         setCalendlyHeight(height);
       }
 
-      const calendlyEvent = e.data?.event;
-      if (calendlyEvent === "calendly.date_and_time_selected") {
-        const alreadyTracked = sessionStorage.getItem(CALENDLY_INTENT_KEY);
-        if (!alreadyTracked) {
-          trackGoogleEvent("calendly_date_time_selected", {
-            event_category: "engagement",
-            event_label: "embedded_calendly",
-          });
-          sessionStorage.setItem(CALENDLY_INTENT_KEY, "true");
-        }
-      }
-
       if (isCalendlyScheduledEvent(e)) {
+        console.log("[Calendly Conversion] Evento calendly.event_scheduled recibido");
+        if (calendlyConversionPendingRef.current || calendlyConversionSentRef.current) {
+          console.log("[Calendly Conversion] Conversión ya enviada o en proceso; se evita duplicado");
+          return;
+        }
+
+        calendlyConversionPendingRef.current = true;
         sendGoogleAdsConversion();
-        sessionStorage.removeItem(CALENDLY_INTENT_KEY);
       }
     };
 
