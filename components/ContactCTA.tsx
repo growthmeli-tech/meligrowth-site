@@ -38,6 +38,8 @@ export default function ContactCTA() {
 
       window.gtag("event", "conversion", {
         send_to: GOOGLE_ADS_CONVERSION_SEND_TO,
+        value: 1.0,
+        currency: "ARS",
       });
 
       console.log("[Calendly Conversion] Conversión enviada a Google Ads");
