@@ -5,7 +5,7 @@ declare global {
   }
 }
 
-export const GOOGLE_ADS_ID = "AW-18871571491";
+export const GOOGLE_ADS_ID = "AW-18071571491";
 export const GOOGLE_ADS_CONVERSION_LABEL =
   process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL ?? "";
 
