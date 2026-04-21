@@ -6,8 +6,8 @@ declare global {
 }
 
 export const GOOGLE_ADS_ID = "AW-18071571491";
-export const GOOGLE_ADS_CONVERSION_LABEL =
-  process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL ?? "";
+export const GOOGLE_ADS_CONVERSION_LABEL = "icg0CJ6nlpkcEKOYmalD";
+export const GOOGLE_ADS_CONVERSION_SEND_TO = `${GOOGLE_ADS_ID}/${GOOGLE_ADS_CONVERSION_LABEL}`;
 
 export const PENDING_CONVERSION_KEY = "meli_growth_pending_google_ads_conversion";
 export const LAST_FIRED_CONVERSION_KEY = "meli_growth_last_fired_google_ads_conversion";
@@ -25,9 +25,7 @@ export function trackGoogleEvent(
 }
 
 export function trackGoogleAdsConversion() {
-  if (!GOOGLE_ADS_CONVERSION_LABEL) return false;
-
   return trackGoogleEvent("conversion", {
-    send_to: `${GOOGLE_ADS_ID}/${GOOGLE_ADS_CONVERSION_LABEL}`,
+    send_to: GOOGLE_ADS_CONVERSION_SEND_TO,
   });
 }

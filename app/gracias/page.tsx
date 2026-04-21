@@ -21,10 +21,12 @@ export default function GraciasPage() {
     const tryTrack = () => {
       if (cancelled) return;
 
-      const pendingConversion = sessionStorage.getItem(PENDING_CONVERSION_KEY);
+      const pendingConversion =
+        sessionStorage.getItem(PENDING_CONVERSION_KEY) ??
+        `gracias-${window.performance.timeOrigin}`;
       const lastTrackedConversion = sessionStorage.getItem(LAST_FIRED_CONVERSION_KEY);
 
-      if (!pendingConversion || pendingConversion === lastTrackedConversion) return;
+      if (pendingConversion === lastTrackedConversion) return;
 
       const didTrack = trackGoogleAdsConversion();
       if (didTrack) {
