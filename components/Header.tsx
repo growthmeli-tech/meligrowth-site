@@ -83,19 +83,19 @@ export default function Header() {
               { label: "Solución", href: "#solucion" },
               { label: "Resultados", href: "#resultados-reales" },
               { label: "Modelo", href: "#precios" },
-              { label: "Agendar", href: "#contacto" },
+              { label: "Agendar diagnóstico", href: "#contacto", cta: true },
             ].map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="header-link"
+                className={`header-link${link.cta ? " header-nav-cta" : ""}`}
                 data-wave
                 style={{
                   fontFamily: "var(--font-mono)",
                   fontSize: "0.65rem",
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
-                  color: "var(--color-muted-light)",
+                  color: link.cta ? undefined : "var(--color-muted-light)",
                   textDecoration: "none",
                 }}
               >
