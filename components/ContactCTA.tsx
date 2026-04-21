@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
+import Script from "next/script";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -9,6 +10,8 @@ import {
   GOOGLE_ADS_CONVERSION_SEND_TO,
   trackGoogleEvent,
 } from "@/lib/tracking";
+
+const CALENDLY_URL = "https://calendly.com/growthmeli/30min?primary_color=ffda00&hide_gdpr_banner=1&locale=es";
 
 export default function ContactCTA() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -43,8 +46,8 @@ export default function ContactCTA() {
     const handler = (e: MessageEvent) => {
       if (e.origin !== "https://calendly.com") return;
 
-      const height = e.data?.payload?.height;
-      if (height && height > 0) {
+      const height = Number.parseInt(e.data?.payload?.height, 10);
+      if (height > 0) {
         setCalendlyHeight(height);
       }
 
@@ -111,15 +114,16 @@ export default function ContactCTA() {
           Analizamos tu cuenta y definimos si hay potencial real de mejora.
         </p>
 
-        <div className="cta-calendly" style={{ overflow: "hidden", height: calendlyHeight ?? "auto" }}>
-          <iframe
-            src="https://calendly.com/growthmeli/30min?primary_color=ffda00&hide_gdpr_banner=1&locale=es"
-            width="100%"
-            height={calendlyHeight ?? "100%"}
-            scrolling="no"
-            frameBorder={0}
-            style={{ border: "none", borderRadius: "2px", display: "block", minHeight: "600px" }}
-            title="Agendá una llamada con Meli Growth"
+        <Script
+          src="https://assets.calendly.com/assets/external/widget.js"
+          strategy="afterInteractive"
+        />
+        <div className="cta-calendly" style={{ overflow: "hidden" }}>
+          <div
+            className="calendly-inline-widget"
+            data-url={CALENDLY_URL}
+            data-resize="true"
+            style={{ minWidth: "320px", height: calendlyHeight ?? 700, minHeight: "700px", borderRadius: "2px" }}
           />
         </div>
       </div>
