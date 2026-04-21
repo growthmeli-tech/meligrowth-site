@@ -125,10 +125,10 @@ export default function Footer() {
               </h4>
               <div style={{ display: "flex", flexDirection: "column", gap: "0.35rem" }}>
                 {[
-                  { name: "Instagram", href: "#" },
+                  { name: "Instagram", href: "https://www.instagram.com/meligrowth_?igsh=MXNuejB6NTEwY2hhYQ%3D%3D&utm_source=qr" },
                   { name: "LinkedIn", href: "#" },
                 ].map((s) => (
-                  <a key={s.name} href={s.href} target="_blank" rel="noreferrer" className="footer-link">
+                  <a key={s.name} href={s.href} target="_blank" rel="noopener noreferrer" className="footer-link">
                     {s.name}
                   </a>
                 ))}
