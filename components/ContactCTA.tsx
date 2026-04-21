@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import SectionHeader from "@/components/ui/SectionHeader";
@@ -12,7 +11,6 @@ import {
 } from "@/lib/tracking";
 
 export default function ContactCTA() {
-  const router = useRouter();
   const sectionRef = useRef<HTMLElement>(null);
   const calendlyConversionSentRef = useRef(false);
   const [calendlyHeight, setCalendlyHeight] = useState<number | undefined>(undefined);
@@ -65,13 +63,12 @@ export default function ContactCTA() {
       if (isCalendlyScheduledEvent(e)) {
         sendGoogleAdsConversion();
         sessionStorage.removeItem(CALENDLY_INTENT_KEY);
-        router.push("/gracias");
       }
     };
 
     window.addEventListener("message", handler);
     return () => window.removeEventListener("message", handler);
-  }, [router]);
+  }, []);
 
   useGSAP(
     () => {
