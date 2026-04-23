@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, DM_Sans } from "next/font/google";
-import Script from "next/script";
+import { CalendlyTracker } from "@/components/CalendlyTracker";
 import CustomCursor from "@/components/CustomCursor";
 import WaveInit from "@/components/WaveInit";
 import { GOOGLE_ADS_ID } from "@/lib/tracking";
@@ -127,19 +127,20 @@ export default function RootLayout({
   return (
     <html lang="es-AR" className={`${bebasNeue.variable} ${dmSans.variable}`}>
       <head>
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`}
-          strategy="afterInteractive"
-        />
-        <Script id="google-tag" strategy="afterInteractive">
-          {`window.dataLayer = window.dataLayer || [];
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
-window.gtag = gtag;
 gtag('js', new Date());
-gtag('config', '${GOOGLE_ADS_ID}');`}
-        </Script>
+gtag('config', '${GOOGLE_ADS_ID}', {
+  allow_enhanced_conversions: true
+});`,
+          }}
+        />
       </head>
       <body className="antialiased">
+        <CalendlyTracker />
         <a href="#main-content" className="skip-link">
           Ir al contenido principal
         </a>
