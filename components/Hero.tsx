@@ -71,7 +71,7 @@ export default function Hero() {
               style={{ marginBottom: "1.25rem" }}
             >
               <span className="hero-mobile-line">OPERAMOS Y</span>{" "}
-              <span className="hero-mobile-line">ESCALAMOS TU CANAL</span>{" "}
+              <span className="hero-mobile-line">ESCALAMOS TU CUENTA</span>{" "}
               <span className="hero-mobile-line">DE MERCADO LIBRE</span>
               <br className="hero-desktop-break" />
               <span className="hero-mobile-line">CON FOCO EN</span>{" "}
