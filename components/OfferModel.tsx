@@ -87,7 +87,9 @@ export default function OfferModel() {
         </div>
 
         <div className="pricing-grid grid-3">
-          {tiers.map((tier) => (
+          {tiers.map((tier) => {
+            const [amount, period] = tier.price.split("/");
+            return (
             <div
               key={tier.id}
               className="pricing-card card-base"
@@ -100,17 +102,33 @@ export default function OfferModel() {
                 {tier.featured && <span className="tag tag-accent">Recomendado</span>}
               </div>
 
-              <p className="body-regular" style={{ margin: "0 0 1rem", color: "var(--color-text)" }}>
-                {tier.description}
+              <p style={{ margin: "0 0 0.4rem", lineHeight: 1, display: "flex", alignItems: "baseline", gap: "0.35rem", flexWrap: "wrap" }}>
+                <span
+                  className="text-accent"
+                  style={{
+                    fontFamily: "var(--font-sans)",
+                    fontSize: "clamp(2rem, 2.4vw, 2.5rem)",
+                    fontWeight: 700,
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  {amount}
+                </span>
+                <span className="body-regular" style={{ margin: 0, fontSize: "1rem", color: "var(--color-muted)" }}>
+                  /{period}
+                </span>
               </p>
 
-              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexWrap: "wrap", marginBottom: "1.25rem" }}>
-                <span className="tag tag-outline">A medida</span>
-                <span className="mono-label">{tier.range}</span>
-              </div>
+              <p className="mono-label" style={{ margin: "0 0 1rem" }}>
+                Para cuentas de {tier.range}
+              </p>
 
               <p className="body-regular" style={{ margin: 0, color: "var(--color-muted)" }}>
-                Fee y variable definidos por operación, categoría y objetivo comercial.
+                Fee fijo mensual. Alcance ajustado según categoría y objetivo comercial.
+              </p>
+
+              <p className="body-regular" style={{ margin: "1rem 0 0", color: "var(--color-text)" }}>
+                {tier.description}
               </p>
 
               <hr className="row-divider" style={{ margin: "1.25rem 0" }} />
@@ -123,7 +141,8 @@ export default function OfferModel() {
                 <Button variant={tier.ctaVariant} href="#contacto" full>Agendar diagnóstico</Button>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

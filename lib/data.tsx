@@ -104,6 +104,7 @@ export const tiers = [
     name: "OPERACIÓN",
     description: "Operación integral del canal.",
     range: "$10M – $20M / mes",
+    price: "USD 800/mes",
     featured: false,
     features: [
       "Operación diaria completa",
@@ -119,6 +120,7 @@ export const tiers = [
     name: "GROWTH",
     description: "Optimización avanzada y crecimiento.",
     range: "$20M – $70M / mes",
+    price: "USD 1.500/mes",
     featured: true,
     features: [
       "Todo lo del plan Operación",
@@ -134,6 +136,7 @@ export const tiers = [
     name: "ESCALA",
     description: "Estructura completa para cuentas de alto volumen.",
     range: "+$70M / mes",
+    price: "USD 3.000/mes",
     featured: false,
     features: [
       "Todo lo del plan Growth",
