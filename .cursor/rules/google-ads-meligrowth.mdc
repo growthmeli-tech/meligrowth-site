@@ -30,25 +30,26 @@ Next.js 16 App Router, React 19, TypeScript, Tailwind 4, GSAP, Vercel.
 
 Antes de editar: `lib/tracking.ts`, `app/layout.tsx`, `components/CalendlyTracker.tsx`, `components/StickyCTA.tsx`, `components/Footer.tsx`, `app/gracias/page.tsx`, `next.config.ts`, `.env.example`.
 
-Hay cambios locales de tracking no commiteados: **no sobrescribirlos**. No tocar secretos (`WEB3FORMS_KEY`, `.env*`).
+No tocar secretos (`WEB3FORMS_KEY`, `.env*`). No descartar WIP ajeno de tracking.
 
-## IDs (observados, no aprobados)
+## IDs confirmados (Google Ads)
 
-- AW observado en `main`: `AW-18071571491`
-- Histórico conflictivo: `AW-18871571491`
-- Label observada: `pwVQCMHQnKAcEKOYmalD`
-- GT en working tree: `GT-K466NNFJ`
-- Sin `G-` ni `GTM-` confirmados
+- Google tag: `GT-K466NNFJ` — cargar `gtag.js` y `gtag('config')` solo con este ID
+- Destino asociado: `AW-18071571491` — no usarlo para cargar el snippet
+- Label conversión principal Submit lead form (2): `pwVQCMHQnKAcEKOYmalD`
+- `send_to`: `AW-18071571491/pwVQCMHQnKAcEKOYmalD`
+- **Prohibido:** `AW-18871571491`
+- Sin `G-` ni `GTM-`. No agregar GA4 ni GTM.
 
-Nunca asumir que un ID observado es correcto. Pedir confirmación explícita antes de cambiar IDs. No mezclar GT + GTM + GA4 + AW sin arquitectura y sin chequeo de duplicados.
+No cambiar IDs sin nueva confirmación explícita. No mezclar GT + GTM + GA4.
 
 ## Conversión en código
 
 - Una reunión = una conversión primaria.
 - Nunca la misma `send_to` en `CalendlyTracker` y `/gracias`.
-- No `user_data` / email / teléfono vacío.
-- No enhanced conversions sin dato real, consentimiento y Tag Assistant.
-- No inventar `value`/`currency`. El `1.0 ARS` del código no es valor de negocio aprobado.
+- No `user_data` / email / teléfono (no hay dato estable verificable en esta etapa).
+- No enhanced conversions en esta etapa.
+- `1.0 ARS` replica el valor actual en Ads, no un valor de negocio aprobado.
 - Validar con Tag Assistant antes de dar por cerrado.
 
 ## Ads: permitido vs prohibido

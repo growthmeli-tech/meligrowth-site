@@ -3,7 +3,7 @@ import { Bebas_Neue, DM_Sans } from "next/font/google";
 import { CalendlyTracker } from "@/components/CalendlyTracker";
 import CustomCursor from "@/components/CustomCursor";
 import WaveInit from "@/components/WaveInit";
-import { GOOGLE_ADS_ID } from "@/lib/tracking";
+import { GOOGLE_TAG_ID } from "@/lib/tracking";
 import "./globals.css";
 
 const bebasNeue = Bebas_Neue({
@@ -127,15 +127,13 @@ export default function RootLayout({
   return (
     <html lang="es-AR" className={`${bebasNeue.variable} ${dmSans.variable}`}>
       <head>
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`} />
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_TAG_ID}`} />
         <script
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${GOOGLE_ADS_ID}', {
-  allow_enhanced_conversions: true
-});`,
+gtag('config', '${GOOGLE_TAG_ID}');`,
           }}
         />
       </head>

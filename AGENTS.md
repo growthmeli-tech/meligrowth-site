@@ -61,33 +61,29 @@ No editarlos de pasada. Alcance aprobado y diagnóstico previo.
 
 `WEB3FORMS_KEY` es secret de servidor. No loguear ni commitear `.env*`.
 
-## IDs observados (no aprobados)
+## IDs confirmados (Google Ads)
 
-Tratar como **observados en código o working tree**, no como verdad de cuenta:
+Confirmados en la cuenta de Google Ads. No cambiar sin nueva aprobación explícita.
 
-| ID | Dónde se vio |
-|----|----------------|
-| `AW-18071571491` | `lib/tracking.ts` en `main` (gtag Ads) |
-| `AW-18871571491` | Historial / refactor previo; potencialmente conflictivo |
-| `pwVQCMHQnKAcEKOYmalD` | Label de conversión Ads |
-| `GT-K466NNFJ` | Working tree local (no necesariamente en `main`) |
+| ID | Estado |
+|----|--------|
+| `GT-K466NNFJ` | Google tag válido. Único ID para cargar `gtag.js` y `gtag('config')`. |
+| `AW-18071571491` | Destino asociado al Google tag. No cargar el snippet con este ID. |
+| `pwVQCMHQnKAcEKOYmalD` | Label de la conversión principal **Submit lead form (2)** — `send_to`: `AW-18071571491/pwVQCMHQnKAcEKOYmalD`. |
+| `AW-18871571491` | **Incorrecto y prohibido.** No cargar, no `config`, no `send_to`. |
 
-No hay `G-` (GA4) ni `GTM-` confirmados en el repo.
+No hay `G-` (GA4) ni `GTM-` en el stack. No agregar GA4 ni GTM.
 
-**Nunca asumir que un ID observado es correcto.** Pedir confirmación explícita antes de cambiar cualquier ID.
-
-Nunca mezclar GT, GTM, GA4 y AW sin explicar la arquitectura y comprobar que no habrá eventos duplicados.
-
-En `main` commiteado, gtag se configura con `AW-18071571491` y la conversión primaria parece ser Calendly `event_scheduled` → `send_to` `AW-…/label`. Hay cambios locales no commiteados en tracking: no sobrescribirlos.
+Arquitectura: un `gtag.js` con `GT-K466NNFJ` → `config` global del GT → conversión Ads **solo** en `calendly.event_scheduled` con `send_to` `AW-18071571491/pwVQCMHQnKAcEKOYmalD`. No mezclar GT + GTM + GA4. No disparar la misma conversión desde `/gracias`.
 
 ## Reglas de conversión (código)
 
 - Una reunión = **una** conversión primaria.
 - Nunca disparar la misma `send_to` desde `CalendlyTracker` **y** `/gracias`.
 - No marcar WhatsApp ni interacciones de Calendly como conversión primaria sin aprobación.
-- No enviar `user_data` / email / teléfono vacío.
-- No implementar enhanced conversions sin dato real, consentimiento adecuado y validación (Tag Assistant).
-- No inventar `value` / `currency`. Si no están definidos comercialmente, pedir confirmación. Hoy el código usa `value: 1.0`, `currency: ARS` — no tratarlo como valor de negocio aprobado.
+- No enviar `user_data` / email / teléfono. No hay dato real, estable y verificable desde Calendly en esta etapa.
+- No implementar enhanced conversions en esta etapa.
+- `value: 1.0` / `currency: ARS` replica el valor configurado hoy en Ads (ARS 1), no un valor de negocio aprobado.
 - Validar con Tag Assistant (y herramientas disponibles) antes de dar un evento por cerrado.
 
 ## Qué puede y no puede hacer el agente
