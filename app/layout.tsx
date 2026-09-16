@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Bebas_Neue, DM_Sans } from "next/font/google";
 import { CalendlyTracker } from "@/components/CalendlyTracker";
 import CustomCursor from "@/components/CustomCursor";
@@ -151,6 +152,7 @@ gtag('config', '${GOOGLE_TAG_ID}');`,
             __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
           }}
         />
+        <Analytics />
       </body>
     </html>
   );
