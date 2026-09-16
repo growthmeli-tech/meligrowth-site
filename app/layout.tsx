@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, DM_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { CalendlyTracker } from "@/components/CalendlyTracker";
 import CustomCursor from "@/components/CustomCursor";
 import WaveInit from "@/components/WaveInit";
@@ -145,6 +146,7 @@ gtag('config', '${GOOGLE_TAG_ID}');`,
         <CustomCursor />
         <WaveInit />
         {children}
+        <Analytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
