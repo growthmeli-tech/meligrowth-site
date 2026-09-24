@@ -10,7 +10,7 @@ Meli Growth es una agencia especializada en Mercado Libre que ofrece servicio in
 
 - **Operación**: Gestión diaria completa — atención al cliente 7 días, publicaciones, stock y salud de cuenta
 - **Crecimiento**: Product Ads, Brand Ads, optimización de ACOS/ROAS y contenido visual
-- **Infraestructura**: Depósito para Full, colecta diaria Flex, reportes quincenales de rentabilidad
+- **Infraestructura**: Depósito para Full, colecta diaria Flex, reportes mensuales de rentabilidad
 
 ## Planes
 

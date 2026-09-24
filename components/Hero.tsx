@@ -188,7 +188,7 @@ export default function Hero() {
       </div>
 
       {/* ── Ticker — sits at bottom of 100vh ─────────────── */}
-      <span className="sr-only">Servicios: Operación diaria, Product Ads, Brand Ads, Full y Flex, Colecta diaria, Salud de cuenta, Repricing, Reportes quincenales.</span>
+      <span className="sr-only">Servicios: Operación diaria, Product Ads, Brand Ads, Full y Flex, Colecta diaria, Salud de cuenta, Repricing, Reportes mensuales.</span>
       <div className="ticker-bar" aria-hidden="true">
         <div className="ticker-inner">
           {TICKER_ITEMS.map((item, i) => (
